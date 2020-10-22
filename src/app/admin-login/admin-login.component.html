@@ -1,0 +1,25 @@
+<div class="h-lgn-mn">
+        <div class="h-lgn">
+            <div class="h-lg-mn">
+                <div class="h-logo">
+                    <img src="assets/images/logo.png"/>
+                </div>
+            </div>
+            <div class="h-lgn-frm clearfix">
+                <div class="clearfix">
+                    <div class="h-input mandatory">
+                        <input type="text" placeholder="Username" #uname/>
+                    </div>  
+                    <div class="h-input mandatory">
+                        <input type="password" placeholder="Password" #pword/>
+                    </div> 
+                </div>
+                <div class="clearfix h-lg-btn-mn">
+                    <div class="h-lg-btn" (click)="loginck($event,uname,pword)">
+                        LOGIN
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+    

@@ -1,0 +1,25 @@
+<router-outlet *ngIf="!header" name="auth"></router-outlet>
+
+
+<mat-sidenav-container *ngIf="header">
+    <mat-sidenav #sidenav>
+        <mat-list role="list" class="h-cat-list">
+            <mat-list-item role="listitem" (click)="sidenav.close()" (click)="navClick($event)" *ngFor="let catL of itemList.CategoryList; let i = index" [attr.data-index]="i">{{catL.categoryName}}</mat-list-item>
+        </mat-list>
+        <div class="h-u-logout" [routerLink]="['/',{ outlets: { auth: ['userlogin'] } }]">Logout</div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar *ngIf="header">
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="sideMenuTog(sidenav)">
+                <i class="fa fa-bars"></i>
+            </button>
+            <!-- <span>My App</span> -->
+            <span class="example-spacer"></span>
+            <div class="h-head-search">
+                <input type="text" placeholder="Search Items here.." />
+                <a><i class="fa fa-search"></i></a>
+            </div>
+        </mat-toolbar>
+        <router-outlet name="main"></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

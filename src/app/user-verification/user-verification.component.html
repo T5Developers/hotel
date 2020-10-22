@@ -1,0 +1,25 @@
+<div class="h-lgn-mn">
+    <div class="h-lgn">
+        <div class="h-lg-mn">
+            <div class="h-logo">
+                <img src="assets/images/logo.png" />
+            </div>
+        </div>
+        <div class="h-lgn-frm clearfix">
+            <div class="clearfix">
+                <h4 class="h-vef-tit">VERIFICATION CODE</h4>
+                <p class="h-vef-p">Please enter the verification code sent to
+                    <span class="h-vef-num">{{phno}}</span>
+                </p>
+                <div class="h-input mandatory">
+                    <input type="number" class="h-uv-otp" placeholder="ENTER OTP" #uvotp/>
+                </div>  
+            </div>
+            <div class="clearfix h-lg-btn-mn">
+                <div class="h-lg-btn h-r-bot-fix" (click)="uverf($event,uvotp)">
+                    VERIFY
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>

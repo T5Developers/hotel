@@ -1,0 +1,128 @@
+<div class="h-od-main">
+    <div class="h-od-tp">
+        <div class="h-od-inp">
+            <div class="h-od-inp-bx h-input">
+                <input tabindex="-1" matInput [matDatepicker]="picker" placeholder="Search By Date"
+                    class="h-date-search-inp" [(ngModel)]="date" #searchDate (dateChange)="datepic(e,searchDate)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <span class="h-date-clear" (click)="clearDate($event)"><i class="fa fa-times-circle"></i></span>
+            </div>
+            <div class="h-od-inp-bx h-input">
+                <input type="text" placeholder="Search" class="h-search-inp" />
+            </div>
+        </div>
+        <div class="h-od-actions">
+            <div class="h-od-act-e h-od-all" (click)="allclk()">
+                <div class="h-od-act-e-l">all</div>
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="h-od-act-e h-od-pending" (click)="pendingclk()">
+                <div class="h-od-act-e-l">Pending</div>
+                <i class="fa fa-history"></i>
+            </div>
+            <div class="h-od-act-e h-od-completed" (click)="completedclk()">
+                <div class="h-od-act-e-l">Completed</div>
+                <i class="fa fa-check-circle-o"></i>
+            </div>
+            <div class="h-od-act-e h-od-export" (click)="exportclk()">
+                <div class="h-od-act-e-l">Export</div>
+                <i class="fa fa-share"></i>
+            </div>
+            <div class="h-od-act-e h-od-cancelled" (click)="cancelledclk()">
+                <div class="h-od-act-e-l">Cancelled</div>
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="h-od-t">
+        <div class="h-od-t-head h-tb-h">
+            <div class="h-od-t-e h-cell-1f">S.NO</div>
+            <div class="h-od-t-e h-cell-2f">TABLE NO</div>
+            <div class="h-od-t-e h-cell-3f">C.NAME</div>
+            <div class="h-od-t-e h-cell-4f">ORDER DETAILS</div>
+            <div class="h-od-t-e h-cell-3f">PHONE NO</div>
+            <div class="h-od-t-e h-cell-3f">DOB</div>
+            <div class="h-od-t-e h-cell-2f">AMOUNT</div>
+            <div class="h-od-t-e h-cell-4f">COMMENTS</div>
+            <div class="h-od-t-e h-cell-2f">STATUS</div>
+        </div>
+        <div class="h-od-t-c cs-custom-scroll">
+            <div class="h-od-t-c-e h-tb-r h-status-{{orderD.status}}"
+                *ngFor="let orderD of orderDetails.orderList;  let i = index" [attr.data-index]="i"
+                [attr.date]="orderD.orderDate">
+                <div class="h-od-t-e h-cell-1f h-tb-sn">{{i+1}}</div>
+                <div class="h-od-t-e h-cell-2f h-tb-c h-od-tn">
+                    <div class="h-tb-head">TABLE NO</div>
+                    <div class="h-tb-content">{{orderD.tableNo}}</div>
+                </div>
+                <div class="h-od-t-e h-cell-3f h-tb-c h-od-cn">
+                    <div class="h-tb-head">C.NAME</div>
+                    <div class="h-tb-content">{{orderD.customerName}}</div>
+                </div>
+                <div class="h-od-t-e h-cell-4f h-flex-d-col h-tb-c h-od-ol">
+                    <div class="h-tb-head">ORDER DETAILS</div>
+                    <div class="h-tc h-tb-content">
+                        <div *ngFor="let foodlist of orderD.Orderdetails;">
+                            <span>{{foodlist.foodName}}</span> * <span>{{foodlist.quantity}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-od-t-e h-cell-3f h-tb-c h-od-ph">
+                    <div class="h-tb-head">PHONE NO</div>
+                    <div class="h-tb-content">{{orderD.phoneNumber}}</div>
+                </div>
+                <div class="h-od-t-e h-cell-3f h-tb-c h-od-dob">
+                    <div class="h-tb-head">DOB</div>
+                    <div class="h-tb-content">{{orderD.dob}}</div>
+                </div>
+                <div class="h-od-t-e h-cell-2f h-fs-amt h-tb-c h-od-amt">
+                    <div class="h-tb-head">AMOUNT</div>
+                    <div class="h-tb-content">RS <span>{{orderD.totalAmount}}</span></div>
+                </div>
+                <div class="h-od-t-e h-cell-4f h-tb-c h-od-cmt">
+                    <div class="h-tb-head">COMMENTS</div>
+                    <div class="h-tb-content">{{orderD.comments}}</div>
+                </div>
+                <div class="h-od-t-e h-cell-2f h-tc h-status-ico h-tb-c h-od-std">
+                    <div class="h-tb-head">STATUS</div>
+                    <div class="h-tb-content">
+                        <i class="fa fa-history h-status-ico h-pending-ico"></i>
+                        <i class="fa fa-check-circle-o h-status-ico h-completed-ico"></i>
+                        <i class="fa fa-times h-status-ico h-cancelled-ico"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="h-od-b">
+        <div class="h-cell-6f h-od-b-e">
+            <span>Total Orders : </span>
+            <span class="h-od-b-e-c">{{totalOrder}}</span>
+        </div>
+        <div class="h-cell-6f h-od-b-e">
+            <span>Total Qty Sales : </span>
+            <span class="h-od-b-e-c">{{orderDetails.Totalqtysales}}</span>
+        </div>
+        <div class="h-cell-6f h-od-b-e">
+            <span>Total Revenue : </span>
+            <span class="h-od-b-e-c">{{totalRevenue}}</span>
+        </div>
+        <div class="h-cell-6f h-od-b-e">
+            <span>Export to Excel</span>
+        </div>
+    </div>
+    <div class="h-status-pop">
+        <ul>
+            <li class="h-st-completed" (click)="statuspopclk($event)">
+                <i class="fa fa-check-circle-o"></i>
+                <span class="h-s-lm">Accept</span>
+            </li>
+            <li class="h-st-cancelled" (click)="statuspopclk($event)">
+                <i class="fa fa-times"></i>
+                <span class="h-s-lm">Cancel</span>
+            </li>
+        </ul>
+    </div>
+</div>

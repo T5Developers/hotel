@@ -1,0 +1,89 @@
+<div class="h-em-mn">
+    <div class="h-em-tp">
+        <h4>Edit Menu</h4>
+        <div class="h-em-actions">
+            <div class="h-em-a-each h-em-cat-add">CATERGORY ADD</div>
+            <div class="h-em-a-each" (click)="catsave($event)">SAVE</div>
+            <div class="h-em-a-each" (click)="export()"><i class="fa fa-share"></i></div>
+        </div>
+    </div>
+    <div class="h-em-c-list cs-custom-scroll" [ngClass] = "{'no-items' : menuItems.length == 0}"><!--no-items-->
+        <div class="h-em-clist-each" *ngFor="let catList of menuItems.CategoryList; let i = index">
+            <div class="h-em-cl-s">
+                <h5 class="mandatory"><input type="text" class="h-em-catnam" value="{{catList.categoryName}}" Placeholder="Enter Category Name"/></h5>
+                <div class="h-em-actions">
+                    <div class="h-em-a-each h-em-items-add"><i class="fa fa-plus"></i></div>
+                    <div class="h-em-a-each h-em-cat-item-delete"><i class="fa fa-trash"></i></div>
+                    <div class="h-em-a-each">
+                        <i class="fa fa-chevron-right h-em-li-tog" (click)="catToggle($event)"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="h-em-cl-c">
+                <div class="h-em-t-head">
+                    <div class="h-em-t-e h-cell-5f">Name</div>
+                    <div class="h-em-t-e h-cell-5f">Descrition</div>
+                    <div class="h-em-t-e h-cell-6f h-tc">Image/Video</div>
+                    <div class="h-em-t-e h-cell-4f h-tc">Pricing</div>
+                    <div class="h-em-t-e h-cell-4f h-tr"></div>
+                </div>
+                <div class="h-em-t-c">
+                    <div class="h-em-t-c-e" *ngFor="let iList of catList.items; let i = index" [attr.foodid]="iList.foodProductId">
+                        <div class="h-em-t-e h-cell-5f h-item-nam mandatory"><input type="text" value="{{iList.foodName}}" placeholder="Enter the Name"/></div>
+                        <div class="h-em-t-e h-cell-5f h-item-des mandatory"><input type="text" value="{{iList.description}}" placeholder="Enter the Description"/></div>
+                        <div class="h-em-t-e h-cell-6f h-tc h-item-img">
+                            <div class="h-ui-each" [ngClass]="{'imgadded': iList.image[0].type === 'image', 'vidadded': iList.image[0].type === 'video', '': iList.image[0].type === 'none' }">
+                                <label class="h-ui-lb clearfix">
+                                    <input type="file" accept="image/png, image/jpg, image/jpeg,image/*,video/mp4,video/x-m4v,video/*">
+                                    <span class="h-ui-c">
+                                        <i class="fa fa-plus"></i>
+                                        <img  src="data:image/jpeg;base64,{{iList.image[0].imageSource}}"/><video><source src="data:video/mp4;base64,{{iList.image[0].imageSource}}" type="video/mp4"></video>
+                                    </span>
+                                </label>
+                                <span class="h-img-clear"><i class="fa fa-times-circle"></i></span>
+                            </div>
+                            <div class="h-ui-each" [ngClass]="{'imgadded': iList.image[1].type === 'image', 'vidadded': iList.image[1].type === 'video', '': iList.image[1].type === 'none' }">
+                                <label class="h-ui-lb clearfix">
+                                    <input type="file" accept="image/png, image/jpg, image/jpeg,image/*,video/mp4,video/x-m4v,video/*">
+                                    <span class="h-ui-c">
+                                    <i class="fa fa-plus"></i>
+                                        <img src="data:image/jpeg;base64,{{iList.image[1].imageSource}}"/><video><source src="data:video/mp4;base64,{{iList.image[1].imageSource}}" type="video/mp4"></video>
+                                    </span>
+                                </label>
+                                <span class="h-img-clear"><i class="fa fa-times-circle"></i></span>
+                            </div>
+                            <div class="h-ui-each" [ngClass]="{'imgadded': iList.image[2].type === 'image', 'vidadded': iList.image[2].type === 'video', '': iList.image[2].type === 'none' }">
+                                <label class="h-ui-lb clearfix">
+                                    <input type="file" accept="image/png, image/jpg, image/jpeg,image/*,video/mp4,video/x-m4v,video/*">
+                                    <span class="h-ui-c">
+                                    <i class="fa fa-plus"></i>
+                                        <img src="data:image/jpeg;base64,{{iList.image[2].imageSource}}"/><video><source src="data:video/mp4;base64,{{iList.image[2].imageSource}}" type="video/mp4"></video>
+                                    </span>
+                                </label>
+                                <span class="h-img-clear"><i class="fa fa-times-circle"></i></span>
+                            </div>
+                            <div class="h-ui-each" [ngClass]="{'imgadded': iList.image[3].type === 'image', 'vidadded': iList.image[3].type === 'video', '': iList.image[3].type === 'none' }">
+                                <label class="h-ui-lb clearfix">
+                                    <input type="file" accept="image/png, image/jpg, image/jpeg,image/*,video/mp4,video/x-m4v,video/*">
+                                    <span class="h-ui-c">
+                                    <i class="fa fa-plus"></i>
+                                        <img src="data:image/jpeg;base64,{{iList.image[3].imageSource}}"/><video><source src="data:video/mp4;base64,{{iList.image[3].imageSource}}" type="video/mp4"></video>
+                                    </span>
+                                </label>
+                                <span class="h-img-clear"><i class="fa fa-times-circle"></i></span>
+                            </div>
+                        </div>
+                        <div class="h-em-t-e h-cell-4f h-tc h-em-prz mandatory">
+                            <span>Rs</span> 
+                            <input type="number" placeholder="Enter" value="{{iList.price}}"/>
+                            <span> /-</span>
+                            </div>
+                        <div class="h-em-t-e h-cell-4f h-em-t-actions h-tr">
+                            <span class="h-em-itm-del"><i class="fa fa-trash"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

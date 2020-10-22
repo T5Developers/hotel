@@ -1,0 +1,46 @@
+<div class="h-lgn-mn">
+    <div class="h-lgn">
+        <div class="h-lg-mn">
+            <div class="h-logo">
+                <img src="assets/images/logo.png" />
+            </div>
+        </div>
+        <div class="h-lgn-frm clearfix">
+            <div class="clearfix">
+                <div class="h-input mandatory">
+                    <input type="text" placeholder="Username" #uname/>
+                </div>
+                <div class="h-input mandatory">
+                    <input type="password" placeholder="Password" #pword/>
+                </div>
+            </div>
+            <div class="clearfix h-lg-btn-mn">
+                <div class="h-lg-btn" (click)="loginck($event,uname,pword)">
+                    LOGIN
+                </div>
+                <!-- <a class="h-lg-fp">Forgot Password?</a>
+                <a class="h-lg-ln" [routerLink]="['/',{ outlets: { auth: ['signup'] } }]">Login as new user</a> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="h-dialog h-dialog-fpassword">
+    <div class="h-d-ov"></div>
+    <div class="h-dialog-content">
+        <div class="h-dialog-title">Change Password</div>
+        <div class="h-dialog-mn">
+            <div class="h-dg-inp">
+                <label>New Password</label>
+                <input type="password" placeholder="Enter the new password" #newpassword/>
+            </div>
+            <div class="h-dg-inp">
+                <label>Confirm Password</label>
+                <input type="password" placeholder="Re Enter the new password" #confirmpassword/>
+            </div>
+            <div class="h-dg-btn-dv">
+                <div class="h-dialog-btn h-dialog-close" (click)="savePassword(newpassword,confirmpassword)">Save</div>
+            </div>
+        </div>
+    </div>
+</div>

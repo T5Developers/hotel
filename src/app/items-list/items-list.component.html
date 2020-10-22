@@ -1,0 +1,98 @@
+<div class="h-il-main cs-custom-scroll">
+    <div class="h-il-banners">
+        <div class="choose_slider_items">
+            <ul id="h-slider">
+                <li class="{{bannerImgClassList[i]}}" *ngFor="let bannerImg of bannerImage.imageList; let i = index">
+                    <a>
+                        <img src="data:image/jpeg;base64,{{bannerImg.imageSource}}" />
+                    </a>
+                </li>
+            </ul>
+            <div id="hl-b-prev" (click)="banners()"></div>
+            <div id="hl-b-next" (click)="banners()"></div>
+        </div>
+    </div>
+
+    <!-- <div class="hi-il-media-ls">
+        <button mat-icon-button onclick="window.open('https://www.twitter.com/', '_blank')">
+            <i class="fa fa-twitter"></i>
+        </button>
+        <button mat-icon-button onclick="window.open('https://www.facebook.com/', '_blank')">
+            <i class="fa fa-facebook"></i>
+        </button>
+        <button mat-icon-button onclick="window.open('https://www.instagram.com/', '_blank')">
+            <i class="fa fa-instagram"></i>
+        </button>
+        <button mat-icon-button onclick="window.open('https://www.youtube.com/', '_blank')">
+            <i class="fa fa-youtube-play"></i>
+        </button>
+    </div> -->
+    <div class="hl-il-li-mn">
+        <div class="hl-il-li-each" *ngFor="let catL of itemList.CategoryList; let i = index" [attr.data-index]="i">
+            <h3>
+                <div>{{catL.categoryName}}</div>
+            </h3>
+            <ul>
+                <li class="hl-il-each" [attr.foodid]="itemL.foodProductId" (click)="itempop($event,slidesImg,desc,prc)"
+                    *ngFor="let itemL of catL.items; let i = index" [attr.data-index]="i">
+                    <div class="hl-il-img">
+                        <img src="data:image/jpeg;base64,{{itemL.image[0].imageSource}}"
+                            onerror="this.src='assets/images/default-item.jpg';" />
+                    </div>
+                    <div class="hl-il-cont">
+                        <div class="hl-il-cont-l">
+                            <h4>{{itemL.foodName}}</h4>
+                            <p>{{itemL.description}}</p>
+                            <div class="hl-il-priz">Rs <span class="hl-il-priz-amt">{{itemL.price}}</span></div>
+                        </div>
+                        <div class="hl-il-cont-r">
+                            <div class="hl-il-count">
+                                <span class="hl-il-c-clk decrease" (click)="icount($event)">-</span>
+                                <span class="hl-il-count-num" (click)="icount($event)">0</span>
+                                <span class="hl-il-c-clk increase" (click)="icount($event)">+</span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="h-i-pop">
+        <div class="h-i-ov" (click)="pophide()"></div>
+        <div class="h-i-content">
+            <div class="h-i-carousel">
+                <div class="h-i-cr-c">
+                    <div class="h-i-c-each active"></div>
+                    <div class="h-i-c-each"></div>
+                    <div class="h-i-c-each"></div>
+                </div>
+                <div class="h-i-cr-a">
+                    <span class="h-i-cr-acts h-left h-disable"><i class="fa fa-angle-left"></i></span>
+                    <span class="h-i-cr-acts h-right"><i class="fa fa-angle-right"></i></span>
+                </div>
+            </div>
+            <p class="h-i-desc"></p>
+            <div class="h-i-prc-mn">
+                <span>RS</span>
+                <span class="h-i-prc">50</span>
+                <span>/-</span>
+            </div>
+        </div>
+    </div>
+    <div class="hl-view-order" (click)="vieworder()">
+        <div class="hl-vw-or-d">
+            <button mat-icon-button>
+                <i class="fa fa-shopping-bag"></i>
+                <span class="hl-badge hl-i-cnt">0</span>
+            </button>
+        </div>
+        <div class="hl-vw-or-m">
+            <div class="hl-vw-or-l">VIEW ORDER</div>
+            <!-- <div class="hl-vw-or-r">
+                <span>Rs</span>
+                <span class="hl-vw-or-prz"></span>
+                <span>/-</span>
+            </div> -->
+        </div>
+    </div>
+</div>

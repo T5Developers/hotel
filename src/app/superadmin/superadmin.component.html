@@ -1,0 +1,436 @@
+<div class="h-sa-mn">
+    <div class="h-sa-ov" (click)="menuToggle()"></div>
+    <div class="h-sa-l">
+        <div class="h-sa-l-c">
+            <div class="h-sa-l-c-e h-ad active" (click)="supad($event)">ADMINS</div>
+            <div class="h-sa-l-c-e h-sub" (click)="supad($event)">SUBSCRIPTION DETAILS</div>
+            <div class="h-sa-l-c-e h-pay" (click)="supad($event)">PAYMENT QUERIES</div>
+        </div>
+        <div class="h-logout" [routerLink]="['/',{ outlets: { auth: ['superadminlogin'] } }]">Logout</div>
+    </div>
+    <div class="h-sa-r">
+        <div class="h-sa-r-e h-od-ad">
+            <div class="h-od-tp h-sa-tp">
+                <div class="h-sa-tp-hd">
+                    <div class="h-sa-sm-tog" (click)="menuToggle()"><i class="fa fa-bars"></i></div>
+                    <h4>ADMINS</h4>
+                    <div class="h-sa-acts">
+                        <div class="h-sa-acts-e" (click)="addCompany()">ADD</div>
+                        <!-- <div class="h-sa-acts-e"(click)="saveCompany()">SAVE</div> -->
+                    </div>
+                </div>
+                <div class="h-od-actions">
+                    <div class="h-od-act-e h-od-all" (click)="allclk()">
+                        <i class="fa fa-bars"></i>
+                    </div>
+                    <div class="h-od-act-e h-od-pending" (click)="pendingclk()">
+                        <i class="fa fa-history"></i>
+                    </div>
+                    <div class="h-od-act-e h-od-completed" (click)="completedclk()">
+                        <i class="fa fa-check-circle-o"></i>
+                    </div>
+                    <div class="h-od-act-e h-od-export" (click)="exportclk()">
+                        <i class="fa fa-share"></i>
+                    </div>
+                </div>
+                <div class="h-od-inp">
+                    <div class="h-od-inp-bx h-input">
+                        <input type="text" placeholder="Search" class="h-search-inp" />
+                    </div>
+                </div>
+            </div>
+            <div class="h-od-t h-sa-t">
+                <div class="h-od-t-head h-tb-h">
+                    <div class="h-od-t-e h-cell-1f">S.NO</div>
+                    <div class="h-od-t-e h-cell-2f">COMPANY</div>
+                    <div class="h-od-t-e h-cell-3f">C.NAME</div>
+                    <div class="h-od-t-e h-cell-3f">ADDRESS</div>
+                    <div class="h-od-t-e h-cell-3f">PHONE NO</div>
+                    <div class="h-od-t-e h-cell-3f">USERNAME</div>
+                    <div class="h-od-t-e h-cell-2f">PASSWORD</div>
+                    <div class="h-od-t-e h-cell-2f">START DATE</div>
+                    <div class="h-od-t-e h-cell-2f">COST/DAY</div>
+                    <div class="h-od-t-e h-cell-2f">STATUS</div>
+                    <div class="h-od-t-e h-cell-1f"></div>
+                </div>
+                <div class="h-od-t-c cs-custom-scroll">
+                    <div class="h-od-t-c-e h-status-{{admList.status}} h-tb-r"
+                        *ngFor="let admList of adminsList;  let i = index" [attr.data-index]="i"
+                        [attr.companyid]="admList.companyID">
+                        <div class="h-od-t-e h-cell-1f h-tb-sn">{{i+1}}</div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">COMPANY</div>
+                            <div class="h-tb-content">{{admList.companyName}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">C.NAME</div>
+                            <div class="h-tb-content">{{admList.adminName}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">ADDRESS</div>
+                            <div class="h-tb-content">{{admList.address}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">PHONE NO</div>
+                            <div class="h-tb-content">{{admList.phoneNumber}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">USERNAME</div>
+                            <div class="h-tb-content">{{admList.userName}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-fw-b h-tb-c">
+                            <div class="h-tb-head">PASSWORD</div>
+                            <div class="h-tb-content">{{admList.password}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">START DATE</div>
+                            <div class="h-tb-content">{{admList.startDate | date:'dd-MM-yyyy'}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">COST/DAY</div>
+                            <div class="h-tb-content">{{admList.price}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tc h-tb-c">
+                            <div class="h-tb-head">STATUS</div>
+                            <div class="h-tb-content">
+                                <i class="fa fa-history h-status-ico h-pending-ico"></i>
+                                <i class="fa fa-check-circle-o h-status-ico h-completed-ico"></i>
+                            </div>
+                        </div>
+                        <div class="h-od-t-e h-cell-1f h-tc h-tb-c h-sa-actions">
+                            <div class="h-tb-head">ACTIONS</div>
+                            <div class="h-tb-content">
+                                <span class="h-od-t-e-edit" (click)="editAdmin($event)"><i
+                                        class="fa fa-pencil"></i></span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-sa-r-e h-od-sd" style="display: none;">
+            <div class="h-od-tp h-sa-tp">
+                <div class="h-sa-tp-hd">
+                    <div class="h-sa-sm-tog" (click)="menuToggle()"><i class="fa fa-bars"></i></div>
+                    <h4>SUBSCRIPTION DETAILS</h4>
+                </div>
+                <!-- <div class="h-sa-acts">
+                    <div class="h-sa-acts-e"><mat-icon>reply</mat-icon></div>
+                    <div class="h-sa-acts-e">EDIT</div>
+                    <div class="h-sa-acts-e">SAVE</div>
+                </div> -->
+            </div>
+            <div class="h-od-t h-sa-t">
+                <div class="h-od-t-head h-tb-h">
+                    <div class="h-od-t-e h-cell-1f">S.NO</div>
+                    <div class="h-od-t-e h-cell-2f">COMPANY</div>
+                    <div class="h-od-t-e h-cell-3f">C.NAME</div>
+                    <div class="h-od-t-e h-cell-2f">ADDRESS</div>
+                    <div class="h-od-t-e h-cell-2f">PAYMENTS</div>
+                    <div class="h-od-t-e h-cell-2f">START DATE</div>
+                    <div class="h-od-t-e h-cell-2f">END DATE</div>
+                    <div class="h-od-t-e h-cell-2f">NO.OF DAYS LEFT</div>
+                    <div class="h-od-t-e h-cell-2f">AMOUNT</div>
+                    <div class="h-od-t-e h-cell-2f">DB/CR</div>
+                    <div class="h-od-t-e h-cell-2f">COMMENTS</div>
+                    <div class="h-od-t-e h-cell-2f">PAUSE SUB</div>
+                </div>
+                <div class="h-od-t-c cs-custom-scroll">
+                    <div class="h-od-t-c-e h-status-{{admList.status}} h-tb-r"
+                        *ngFor="let admList of adminsList;  let i = index" [attr.data-index]="i">
+                        <div class="h-od-t-e h-cell-1f h-tb-sn">{{i+1}}</div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">COMPANY</div>
+                            <div class="h-tb-content">{{admList.companyName}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">C.NAME</div>
+                            <div class="h-tb-content">{{admList.adminName}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">ADDRESS</div>
+                            <div class="h-tb-content">{{admList.address}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">PAYMENTS</div>
+                            <div class="h-tb-content">{{admList.paymentType}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">START DATE</div>
+                            <div class="h-tb-content">{{admList.startDate | date:'dd-MM-yyyy'}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">END DATE</div>
+                            <div class="h-tb-content">{{admList.endDate | date:'dd-MM-yyyy'}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">NO.OF DAYS LEFT</div>
+                            <div class="h-tb-content">{{admList.daysLeft}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-fw-bold h-amnt h-tb-c" (click)="amountHistory($event,admList)">
+                            <div class="h-tb-head">AMOUNT</div>
+                            <div class="h-tb-content">{{admList.totalAmount}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">DB/CR</div>
+                            <div class="h-tb-content">{{admList.drCr}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">COMMENTS</div>
+                            <div class="h-tb-content">{{admList.comments}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c h-pause">
+                            <div class="h-tb-head">PAUSE SUB</div>
+                            <div class="h-tb-content">
+                                <label class="cs-switch">
+                                    <input type="checkbox" (click)="pauseCheck($event)" [(ngModel)]="admList.pause">
+                                    <span class="cs-slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-sa-r-e h-od-pq" style="display: none;">
+            <div class="h-od-tp h-sa-tp">
+                <div class="h-sa-tp-hd">
+                    <div class="h-sa-sm-tog" (click)="menuToggle()"><i class="fa fa-bars"></i></div>
+                    <h4>PAYMENT QUERIES</h4>
+                </div>
+                <!-- <div class="h-sa-acts">
+                    <div class="h-sa-acts-e"><mat-icon>reply</mat-icon></div>
+                    <div class="h-sa-acts-e">EDIT</div>
+                    <div class="h-sa-acts-e">SAVE</div>
+                </div> -->
+            </div>
+            <div class="h-od-t h-sa-t">
+                <div class="h-od-t-head h-tb-h">
+                    <div class="h-od-t-e h-cell-1f">S.NO</div>
+                    <div class="h-od-t-e h-cell-2f">COMPANY</div>
+                    <div class="h-od-t-e h-cell-3f">C.NAME</div>
+                    <div class="h-od-t-e h-cell-3f">ADDRESS</div>
+                    <div class="h-od-t-e h-cell-2f">PAYMENTS</div>
+                    <div class="h-od-t-e h-cell-2f">START DATE</div>
+                    <div class="h-od-t-e h-cell-2f">END DATE</div>
+                    <div class="h-od-t-e h-cell-2f">NO.OF DAYS LEFT</div>
+                    <div class="h-od-t-e h-cell-2f">AMOUNT</div>
+                    <div class="h-od-t-e h-cell-2f">DB/CR</div>
+                    <div class="h-od-t-e h-cell-2f">COMMENTS</div>
+                </div>
+                <div class="h-od-t-c cs-custom-scroll">
+                    <div class="h-od-t-c-e h-status-{{admList.status}} h-tb-r"
+                        *ngFor="let admList of adminsList;  let i = index" [attr.data-index]="i">
+                        <div class="h-od-t-e h-cell-1f h-tb-sn">{{i+1}}</div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">COMPANY</div>
+                            <div class="h-tb-content">{{admList.companyName}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">C.NAME</div>
+                            <div class="h-tb-content">{{admList.adminName}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">ADDRESS</div>
+                            <div class="h-tb-content">{{admList.address}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">PAYMENTS</div>
+                            <div class="h-tb-content">{{admList.paymentType}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">START DATE</div>
+                            <div class="h-tb-content">{{admList.startDate | date:'dd-MM-yyyy'}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">END DATE</div>
+                            <div class="h-tb-content">{{admList.endDate | date:'dd-MM-yyyy'}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">NO.OF DAYS LEFT</div>
+                            <div class="h-tb-content">{{admList.daysLeft}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-fw-bold  h-tb-c">
+                            <div class="h-tb-head">AMOUNT</div>
+                            <div class="h-tb-content">{{admList.totalAmount}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">DB/CR</div>
+                            <div class="h-tb-content">{{admList.drCr}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-2f h-tb-c">
+                            <div class="h-tb-head">COMMENTS</div>
+                            <div class="h-tb-content">{{admList.comments}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="h-dialog h-dialog-addcomp">
+    <div class="h-d-ov" (click)="popClose()"></div>
+    <div class="h-dialog-content">
+        <div class="h-dialog-title">ADD ADMIN</div>
+        <div class="h-dialog-mn">
+            <div class="h-dg-inp mandatory">
+                <label>Company Name</label>
+                <input type="text" class="cmname" placeholder="Enter ther Company Name" />
+            </div>
+            <div class="h-dg-inp mandatory">
+                <label>Customer Name</label>
+                <input type="text" class="csname" placeholder="Enter ther Customer Name" />
+            </div>
+            <div class="h-dg-inp mandatory">
+                <label>Address</label>
+                <input type="text" class="addrs" placeholder="Enter ther Address" />
+            </div>
+            <div class="h-dg-inp mandatory">
+                <label>Phone Number</label>
+                <input type="text" class="phnum" placeholder="Enter ther Phone Number" />
+            </div>
+            <div class="h-dg-inp mandatory">
+                <label>User Name</label>
+                <input type="text" class="uname" placeholder="Enter ther User Name" />
+            </div>
+            <div class="h-dg-inp mandatory">
+                <label>Password</label>
+                <input type="text" class="pword" placeholder="Enter ther Password" />
+            </div>
+            <div class="h-dg-inp mandatory">
+                <label>Start Date</label>
+                <div class="h-dg-inp-date">
+                    <input tabindex="-1" matInput [matDatepicker]="picker" class="sdate"
+                        placeholder="Enter ther Start Date" [(ngModel)]="sdate" #startDate [min]="sminDate"
+                        (dateChange)="startdatepic(e,startDate)">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <span class="h-date-clear" (click)="clearDate($event)"><i class="fa fa-times-circle"></i></span>
+                </div>
+            </div>
+            <div class="h-dg-inp mandatory">
+                <label>End Date</label>
+                <div class="h-dg-inp-date">
+                    <input tabindex="-1" matInput [matDatepicker]="picker2" class="edate"
+                        placeholder="Enter ther End Date" [(ngModel)]="edate" #endDate [min]="minDate"
+                        (dateChange)="enddatepic(e,endDate)">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                    <span class="h-date-clear" (click)="clearDate($event)"><i class="fa fa-times-circle"></i></span>
+                </div>
+            </div>
+            <div class="h-dg-inp mandatory">
+                <label>Cost/Day</label>
+                <input type="number" class="cpday" (keyup)="cperday($event)" placeholder="Enter ther Cost/Day" />
+            </div>
+            <div class="h-dg-inp">
+                <label>Payments</label>
+                <select class="pymnt">
+                    <option value="cash">CASH</option>
+                    <option value="online">ONLINE</option>
+                </select>
+            </div>
+            <div class="h-dg-inp mandatory">
+                <label>Amount</label>
+                <input type="text" class="amnt" placeholder="Enter ther Amount" />
+            </div>
+
+            <div class="h-dg-inp mandatory">
+                <label>Comments</label>
+                <input type="text" class="cmnts" placeholder="Enter ther Comments" />
+            </div>
+            <div class="h-dg-inp">
+                <label>DR/CR</label>
+                <select class="drcr">
+                    <option value="debit">Debit</option>
+                    <option value="credit">Credit</option>
+                </select>
+            </div>
+            <div class="h-dg-inp">
+                <label>Status</label>
+                <select class="status">
+                    <option value="completed">Completed</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+
+            <div class="h-dg-btn-dv">
+                <div class="h-dialog-btn h-dialog-close" (click)="saveAdmin($event)">Save</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="h-dialog h-dialog-payment-history">
+    <div class="h-d-ov" (click)="popClose()"></div>
+    <div class="h-dialog-content">
+        <div class="h-dialog-title">PAYMENT HISTORY</div>
+        <div class="h-dialog-mn">
+            <div class="clearfix h-ph-tp">
+                <div class="h-cell-12f">
+                    <label>Company Name</label>
+                    <div class="h-ph-comp-name"></div>
+                </div>
+                <div class="h-cell-12f">
+                    <label>Company ID</label>
+                    <div class="h-ph-comp-id"></div>
+                </div>
+            </div>
+            <div class="h-od-t">
+                <div class="h-od-t-head h-tb-h">
+                    <div class="h-od-t-e h-cell-3f">S.NO</div>
+                    <div class="h-od-t-e h-cell-3f">PAYMENTS STATUS</div>
+                    <div class="h-od-t-e h-cell-3f">DATE</div>
+                    <div class="h-od-t-e h-cell-3f">AMOUNT</div>
+                    <div class="h-od-t-e h-cell-3f">FROM</div>
+                    <div class="h-od-t-e h-cell-3f">TO</div>
+                    <div class="h-od-t-e h-cell-3f">DR/CD</div>
+                    <div class="h-od-t-e h-cell-3f">ACTION</div>
+                </div>
+                <div class="h-od-t-c cs-custom-scroll">
+                    <div class="h-od-t-c-e h-tb-r" *ngFor="let phistory of paymentHistory;  let i = index"
+                        [attr.data-index]="i">
+                        <div class="h-od-t-e h-cell-3f h-tb-sn">{{i+1}}</div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">PAYMENTS</div>
+                            <div class="h-tb-content">{{phistory.paymentStatus}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">DATE</div>
+                            <div class="h-tb-content">{{phistory.accRegisteredDate | date:'dd-MM-yyyy'}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">AMOUNT</div>
+                            <div class="h-tb-content">{{phistory.totalAmount}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">FROM</div>
+                            <div class="h-tb-content">{{phistory.startDate | date:'dd-MM-yyyy'}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">TO</div>
+                            <div class="h-tb-content">{{phistory.endDate | date:'dd-MM-yyyy'}}</div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">DB/CR</div>
+                            <div class="h-tb-content">
+                                <select value="phistory.paymentStatus" [(ngModel)]="phistory.paymentStatus"
+                                    id="ddlPaymentApprove" (change)="phdecr($event)">
+                                    <option value="debit">Debit</option>
+                                    <option value="credit">Credit</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="h-od-t-e h-cell-3f h-tb-c">
+                            <div class="h-tb-head">ACTION</div>
+                            <div class="h-tb-content">
+                                <span class="h-ph-chk" (click)="phcheck($event)"><i class="fa fa-check"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

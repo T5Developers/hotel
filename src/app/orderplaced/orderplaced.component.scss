@@ -1,0 +1,60 @@
+@import '../../assets/styles/variables.scss';
+.hl-op-mn{
+    height: calc(100% - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hl-op-ico{
+    text-align: center;
+    margin: 20px;
+    span{
+        display: inline-flex;
+        width: 130px;
+        height: 130px;
+        border: 8px solid $th-clr;
+        border-radius: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    i{
+        font-size: 90px;
+        font-weight: normal;
+        color: $th-clr;
+    }
+}
+.hl-op-pop{
+    background-color: #fff;
+    box-shadow: 15px 15px 20px #cdcdcd;
+    padding: 30px 20px;
+    font-size: 18px;
+    margin: 0 20px 20px 20px;
+    text-align: center;
+    font-weight: 600;
+    color: $th-clr;
+    display: inline-block;
+}
+.hl-op-inp-mn{
+    text-align: center;
+    margin: 15px 0px 15px 0px;
+    font-size: 20px;
+    float: left;
+    width: 100%;
+    .hl-op-lb{
+        font-weight: 600;
+    }
+}
+.h-op-btn{
+    background-color: $th-clr;
+    color: #fff;
+    padding: 10px 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 600;
+}
+.hl-op-po{
+    padding-bottom: 10px;
+    text-align: center;
+}

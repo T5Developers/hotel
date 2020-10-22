@@ -1,0 +1,14 @@
+$bg-gray: #f3f3f3;
+$th-green: #7ca852;
+
+$th-clr: $th-green;
+
+
+/*Responsive Variables*/
+$screen-xs:     "(min-width: 320px) and  (max-width: 480px)";/* Extra small screen / phone */
+$screen-sm: 	"(min-width: 481px) and  (max-width: 640px)";/* Small screen / phone */
+$screen-md: 	"(min-width: 641px) and  (max-width: 1025px)";/* Medium screen / tablet */
+$screen-mdx: 	"(min-width: 1026px) and  (max-width: 1300px)";/* Medium screen / tablet */
+$screen-lg: 	"(min-width: 801px)";                        /* Desktop*/
+$Lanscapscreen: "and (orientation : landscape)";
+$portraitscreen: "and (orientation : portrait)";
