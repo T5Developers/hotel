@@ -833,6 +833,14 @@
             order: 8!important;
             align-items: center!important;
         }
+        .h-od-ad{
+            order: 9!important;
+            width: 100%!important;
+            align-items: center!important;
+            .h-tb-content{
+                width: 100%!important;
+            }    
+        }
     }
 
 

@@ -76,6 +76,7 @@ export class OrderDetailsComponent implements OnInit {
           $(".h-od-t-c-e").removeClass("h-status-edit-act");
         });
         var ordL = this.backendJson;
+        console.log(ordL);
         var frontendjson = {
           OrderList: []
         }
@@ -95,6 +96,7 @@ export class OrderDetailsComponent implements OnInit {
             createdBy: v.createdBy,
             customerId: v.customerId,
             customerName: v.customerName,
+            Address: v.address,
             description: v.description,
             discount: v.discount,
             dob: v.dob,

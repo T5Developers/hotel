@@ -41,11 +41,12 @@
             <div class="h-od-t-e h-cell-1f">S.NO</div>
             <div class="h-od-t-e h-cell-2f">TABLE NO</div>
             <div class="h-od-t-e h-cell-3f">C.NAME</div>
+            <div class="h-od-t-e h-cell-2f">ADDRESS</div>
             <div class="h-od-t-e h-cell-4f">ORDER DETAILS</div>
             <div class="h-od-t-e h-cell-3f">PHONE NO</div>
             <div class="h-od-t-e h-cell-3f">DOB</div>
             <div class="h-od-t-e h-cell-2f">AMOUNT</div>
-            <div class="h-od-t-e h-cell-4f">COMMENTS</div>
+            <div class="h-od-t-e h-cell-2f">COMMENTS</div>
             <div class="h-od-t-e h-cell-2f">STATUS</div>
         </div>
         <div class="h-od-t-c cs-custom-scroll">
@@ -60,6 +61,10 @@
                 <div class="h-od-t-e h-cell-3f h-tb-c h-od-cn">
                     <div class="h-tb-head">C.NAME</div>
                     <div class="h-tb-content">{{orderD.customerName}}</div>
+                </div>
+                <div class="h-od-t-e h-cell-2f h-tb-c h-od-ad">
+                    <div class="h-tb-head">ADDRESS</div>
+                    <div class="h-tb-content">{{orderD.Address}}</div>
                 </div>
                 <div class="h-od-t-e h-cell-4f h-flex-d-col h-tb-c h-od-ol">
                     <div class="h-tb-head">ORDER DETAILS</div>
@@ -81,7 +86,7 @@
                     <div class="h-tb-head">AMOUNT</div>
                     <div class="h-tb-content">RS <span>{{orderD.totalAmount}}</span></div>
                 </div>
-                <div class="h-od-t-e h-cell-4f h-tb-c h-od-cmt">
+                <div class="h-od-t-e h-cell-2f h-tb-c h-od-cmt">
                     <div class="h-tb-head">COMMENTS</div>
                     <div class="h-tb-content">{{orderD.comments}}</div>
                 </div>
