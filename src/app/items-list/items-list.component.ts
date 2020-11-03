@@ -233,6 +233,7 @@ export class ItemsListComponent implements OnInit {
     var pt = this.itemList.CategoryList[prind].items[clkind];
     var desc = pt.description;
     var prc = pt.price;
+    var fname = pt.foodName;
     $(".h-i-cr-c").html("");
     $(".h-i-cr-acts").addClass("h-disable");
     var imglen = pt.image.length;
@@ -263,6 +264,7 @@ export class ItemsListComponent implements OnInit {
     });
     $(".h-i-desc").text(desc);
     $(".h-i-prc").text(prc);
+    $(".h-i-name").text(fname);
     $(".h-i-pop").addClass("h-open");
   }
   pophide() {

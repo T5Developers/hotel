@@ -181,6 +181,9 @@
                         color: $th-clr;
                         margin: 0;
                         font-weight: 600;
+                        white-space: nowrap;
+                        overflow:hidden;
+                        text-overflow: ellipsis;
                     }
                     p{
                         color: #767479;
@@ -291,9 +294,14 @@
         background-color: #ededed;
         padding: 20px;
         z-index: 1;
+        h4{
+            color:  $th-clr;
+            padding: 0 15px;
+            margin: 5px 0 0 0;
+        }
         
         p{
-            margin-top: 20px;
+            margin-top: 10px;
             padding: 0 15px;
             font-style: italic;
             color: #928c89;
