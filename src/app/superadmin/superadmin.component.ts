@@ -326,7 +326,7 @@ export class SuperadminComponent implements OnInit {
   }
   sminDate = new Date();
   minDate;
-  startdatepic(e, startDate) {
+  startdatepic(startDate) {
     var stDate = $(".sdate").val();
     var edDate = $(".edate").val();
     var cpdy = $(".cpday").val();
@@ -361,7 +361,7 @@ export class SuperadminComponent implements OnInit {
     }
   }
 
-  enddatepic(e, endDate) {
+  enddatepic(endDate) {
     var stDate = $(".sdate").val();
     var edDate = $(".edate").val();
     var cpdy = $(".cpday").val();

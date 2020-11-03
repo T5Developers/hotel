@@ -195,7 +195,7 @@ export class OrderDetailsComponent implements OnInit {
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
     XLSX.writeFile(wb, 'ScoreSheet.xlsx');
   }
-  datepic(e, searchDate) {
+  datepic(searchDate) {
     if (searchDate.value != "") {
       $('.h-od-t-c-e').hide();
       $(searchDate).parent().addClass("dateupdated");

@@ -33,7 +33,7 @@
                 <div>{{catL.categoryName}}</div>
             </h3>
             <ul>
-                <li class="hl-il-each" [attr.foodid]="itemL.foodProductId" (click)="itempop($event,slidesImg,desc,prc)"
+                <li class="hl-il-each" [attr.foodid]="itemL.foodProductId" (click)="itempop($event)"
                     *ngFor="let itemL of catL.items; let i = index" [attr.data-index]="i">
                     <div class="hl-il-img">
                         <img src="data:image/jpeg;base64,{{itemL.image[0].imageSource}}"

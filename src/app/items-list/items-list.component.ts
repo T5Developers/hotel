@@ -20,7 +20,7 @@ export class ItemsListComponent implements OnInit {
   IsUserExists: any;
   lstProducts: any;
 
-  constructor(private _sanitizer: DomSanitizer, private appservice: RestAppService, public dataServic: DataService,public dataService: DataserviceService, private router: Router) { }
+  constructor(private _sanitizer: DomSanitizer, private appservice: RestAppService, public dataServic: DataService, public dataService: DataserviceService, private router: Router) { }
   itemList = {
     CategoryList: []
   };
@@ -131,7 +131,7 @@ export class ItemsListComponent implements OnInit {
             });
           });
         });
-        
+
         this.dataServic.catagoryList = frontendjson;
         this.itemList = frontendjson;
         localStorage.setItem("foodItemList", JSON.stringify(frontendjson));
@@ -226,13 +226,13 @@ export class ItemsListComponent implements OnInit {
 
   bannerImgClassList = ["current_item", "next_item", "next_hidden", "next_hidden", "previous_hidden", "previous_item"];
   slides = [];
-  itempop(event, slidesImg, desc, prc) {
+  itempop(event) {
     var target = event.target || event.srcElement || event.currentTarget;
     var clkind = $(target).closest("li").attr("data-index");
     var prind = $(target).closest(".hl-il-li-each").attr("data-index");
     var pt = this.itemList.CategoryList[prind].items[clkind];
-    desc = pt.description;
-    prc = pt.price;
+    var desc = pt.description;
+    var prc = pt.price;
     $(".h-i-cr-c").html("");
     $(".h-i-cr-acts").addClass("h-disable");
     var imglen = pt.image.length;
@@ -299,27 +299,27 @@ export class ItemsListComponent implements OnInit {
       Phonenumber: "9876543210",
       ItemsList: []
     }
-    if($(".iselected").length){
-    $(".iselected").each(function () {
-      var thzname = $(this).find("h4").text().trim();
-      var thzid = $(this).attr("foodid");
-      var thzprc = $(this).find(".hl-il-priz-amt").text().trim();
-      var thzcnt = $(this).find(".hl-il-count-num").text().trim();
-      var thzdec = $(this).find("p").text().trim();
-      var thzData = {
-        CompanyID: Cid,
-        FoodName: thzname,
-        FoodId: Number(thzid),
-        Price: thzprc,
-        Count: thzcnt,
-        Description: thzdec,
-      }
-      selectedI.ItemsList.push(thzData);
-    });
-    localStorage.setItem("selectedItems", JSON.stringify(selectedI));
-    console.log(JSON.stringify(selectedI));
-    this.router.navigate([{ outlets: { auth: ['vieworder'] } }]);
-    }else{
+    if ($(".iselected").length) {
+      $(".iselected").each(function () {
+        var thzname = $(this).find("h4").text().trim();
+        var thzid = $(this).attr("foodid");
+        var thzprc = $(this).find(".hl-il-priz-amt").text().trim();
+        var thzcnt = $(this).find(".hl-il-count-num").text().trim();
+        var thzdec = $(this).find("p").text().trim();
+        var thzData = {
+          CompanyID: Cid,
+          FoodName: thzname,
+          FoodId: Number(thzid),
+          Price: thzprc,
+          Count: thzcnt,
+          Description: thzdec,
+        }
+        selectedI.ItemsList.push(thzData);
+      });
+      localStorage.setItem("selectedItems", JSON.stringify(selectedI));
+      console.log(JSON.stringify(selectedI));
+      this.router.navigate([{ outlets: { auth: ['vieworder'] } }]);
+    } else {
       alert("Your Cart is empty, Please add item(s) to place order");
     }
   }

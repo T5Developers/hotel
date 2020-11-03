@@ -15,13 +15,13 @@ export class BillingDetailsComponent implements OnInit {
     orderList: []
   }
   backendJson: []
-    logincheck = true;
+  logincheck = true;
   ngOnInit() {
     let obj = {
       CompanyID: 1,
       Flag: 2
     }
- if(this.logincheck != true){
+    if (this.logincheck != true) {
       this.router.navigate([{ outlets: { auth: ['adminlogin'] } }]);
     }
     this.appservice.GetOrderedDet(obj).subscribe(
@@ -51,7 +51,7 @@ export class BillingDetailsComponent implements OnInit {
         }
         $(ordL).each(function (i, v) {
           var cid = v.customerId;
-   var ccr = v.createdAt;
+          var ccr = v.createdAt;
           var ordereach = {
             billingID: v.billingID,
             comments: v.comments,
@@ -90,10 +90,10 @@ export class BillingDetailsComponent implements OnInit {
             var x = 0;
             $(frontendjson.OrderList).each(function (ind, vl) {
               var fcid = vl.customerId;
-          var fcr = vl.createdAt;
-          if((fcid == cid) && (fcr == ccr)){
-            x = 1;
-          }
+              var fcr = vl.createdAt;
+              if ((fcid == cid) && (fcr == ccr)) {
+                x = 1;
+              }
             });
             if (x == 0) {
               frontendjson.OrderList.push(ordereach);
@@ -104,18 +104,18 @@ export class BillingDetailsComponent implements OnInit {
         });
         $(ordL).each(function (i, v) {
           var cid = v.customerId;
-var ccr = v.createdAt;
+          var ccr = v.createdAt;
           var ordereach = {
             foodName: v.foodName,
             quantity: v.quantity
           }
           $(frontendjson.OrderList).each(function (ind, vl) {
             var fcid = vl.customerId;
-        var fcr = vl.createdAt;
-        if((fcid == cid) && (fcr == ccr)){
-          vl.Orderdetails.push(ordereach);
-        }
-      });
+            var fcr = vl.createdAt;
+            if ((fcid == cid) && (fcr == ccr)) {
+              vl.Orderdetails.push(ordereach);
+            }
+          });
         });
         this.billingDetails.orderList = frontendjson.OrderList;
         console.log(frontendjson);
@@ -125,7 +125,7 @@ var ccr = v.createdAt;
         alert('error');
       });
   }
-  datepic(e, searchDate) {
+  datepic(searchDate) {
     if (searchDate.value != "") {
       $('.h-bd-t-c-e').hide();
       $(searchDate).parent().addClass("dateupdated");

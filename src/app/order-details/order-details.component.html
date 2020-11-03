@@ -3,7 +3,7 @@
         <div class="h-od-inp">
             <div class="h-od-inp-bx h-input">
                 <input tabindex="-1" matInput [matDatepicker]="picker" placeholder="Search By Date"
-                    class="h-date-search-inp" [(ngModel)]="date" #searchDate (dateChange)="datepic(e,searchDate)">
+                    class="h-date-search-inp" [(ngModel)]="date" #searchDate (dateChange)="datepic(searchDate)">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <span class="h-date-clear" (click)="clearDate($event)"><i class="fa fa-times-circle"></i></span>

@@ -303,7 +303,7 @@
                 <div class="h-dg-inp-date">
                     <input tabindex="-1" matInput [matDatepicker]="picker" class="sdate"
                         placeholder="Enter ther Start Date" [(ngModel)]="sdate" #startDate [min]="sminDate"
-                        (dateChange)="startdatepic(e,startDate)">
+                        (dateChange)="startdatepic(startDate)">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                     <span class="h-date-clear" (click)="clearDate($event)"><i class="fa fa-times-circle"></i></span>
@@ -314,7 +314,7 @@
                 <div class="h-dg-inp-date">
                     <input tabindex="-1" matInput [matDatepicker]="picker2" class="edate"
                         placeholder="Enter ther End Date" [(ngModel)]="edate" #endDate [min]="minDate"
-                        (dateChange)="enddatepic(e,endDate)">
+                        (dateChange)="enddatepic(endDate)">
                     <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                     <mat-datepicker #picker2></mat-datepicker>
                     <span class="h-date-clear" (click)="clearDate($event)"><i class="fa fa-times-circle"></i></span>

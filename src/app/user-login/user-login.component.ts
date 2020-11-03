@@ -52,7 +52,7 @@ export class UserLoginComponent implements OnInit {
         data => {
           this.lstUserVerification = data as any;
           if (this.lstUserVerification.length > 0) {
-            
+
             //this.datas(this.lstUserVerification);
             this.dataService.serviceData = this.lstUserVerification;
             localStorage.setItem("lstCompanyInfo", this.lstUserVerification);
@@ -75,7 +75,7 @@ export class UserLoginComponent implements OnInit {
   set datas(value: any) {
     this.dataService.serviceData = value;
   }
-  datepic(e, uldob) {
+  datepic(uldob) {
     if (uldob.value != "") {
       $(uldob).parent().addClass("dateupdated");
     }

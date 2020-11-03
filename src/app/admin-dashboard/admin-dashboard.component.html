@@ -104,7 +104,7 @@
                         <span class="h-d-rw-lb">FROM</span>
                         <span class="h-d-rw-dt">
                             <input tabindex="-1" matInput [matDatepicker]="picker" placeholder="Start Date"
-                                class="h-d-rw-s-d" [min]="minDate" (dateChange)="startDate(e)" #rwsdate>
+                                class="h-d-rw-s-d" [min]="minDate" (dateChange)="startDate()" #rwsdate>
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                         </span>
@@ -113,7 +113,7 @@
                         <span class="h-d-rw-lb">TO</span>
                         <span class="h-d-rw-dt">
                             <input tabindex="-1" matInput [matDatepicker]="picker2" placeholder="End Date"
-                                class="h-d-rw-e-d" [min]="minDate" (dateChange)="endDate(e)" #rwedate>
+                                class="h-d-rw-e-d" [min]="minDate" (dateChange)="endDate()" #rwedate>
                             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                             <mat-datepicker #picker2></mat-datepicker>
                         </span>

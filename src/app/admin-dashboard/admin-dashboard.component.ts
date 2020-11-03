@@ -149,7 +149,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
 
-  startDate(e) {
+  startDate() {
     var stDate = $(".h-d-rw-s-d").val();
     var edDate = $(".h-d-rw-e-d").val();
     if (edDate != "") {
@@ -190,7 +190,7 @@ export class AdminDashboardComponent implements OnInit {
       }
     }
   }
-  endDate(e) {
+  endDate() {
     var stDate = $(".h-d-rw-s-d").val();
     var edDate = $(".h-d-rw-e-d").val();
     if (stDate == "") {

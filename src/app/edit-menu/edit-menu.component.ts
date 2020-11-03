@@ -12,13 +12,15 @@ export class EditMenuComponent implements OnInit {
 
   lstProduct: any;
   CompId: number;
-  constructor(public dataService: DataserviceService, private appservice: RestAppService,private router: Router) { }
-  menuItems = {};
+  constructor(public dataService: DataserviceService, private appservice: RestAppService, private router: Router) { }
+  menuItems = {
+    CategoryList: []
+  };
 
   backendJson = [];
-    logincheck = true;
+  logincheck = true;
   ngOnInit() {
-if(this.logincheck != true){
+    if (this.logincheck != true) {
       this.router.navigate([{ outlets: { auth: ['adminlogin'] } }]);
     }
     if (this.lstProduct == undefined)
@@ -103,15 +105,15 @@ if(this.logincheck != true){
         });
         $(catl).each(function (index, val) {
           var foodid = val.foodProductId;
-      var imagesr = val.imageSource;
-      var typ = val.type;
+          var imagesr = val.imageSource;
+          var typ = val.type;
           $(frontendjson.CategoryList).each(function (idx, vle) {
             $(vle.items).each(function (i, ve) {
               var fdid = ve.foodProductId;
               if (foodid == fdid) {
                 var imageSource = {
-                imageSource:imagesr,
-                type:typ
+                  imageSource: imagesr,
+                  type: typ
                 }
                 ve.image.push(imageSource);
               }
@@ -126,7 +128,7 @@ if(this.logincheck != true){
             if (imremn != 0) {
               var imgemp = {
                 imageSource: "",
-              type:"none"
+                type: "none"
               }
               var i;
               for (i = 0; i < imremn; i++) {
@@ -379,7 +381,7 @@ if(this.logincheck != true){
               Price: Number(thisprc),
               Description: thisdesc,
               imageSource: defaultimg,
-              CompanyID:Number(this.CompId),
+              CompanyID: Number(this.CompId),
               // createdAt: "",
               // createdBy: "",
               // foodCategoryId: "",
@@ -411,7 +413,7 @@ if(this.logincheck != true){
               Price: Number(thisprc),
               Description: thisdesc,
               imageSource: base64removedsrc,
-              CompanyID:Number(this.CompId),
+              CompanyID: Number(this.CompId),
               // createdAt: "",
               // createdBy: "",
               // foodCategoryId: "",

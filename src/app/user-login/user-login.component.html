@@ -2,34 +2,35 @@
     <div class="h-lgn">
         <div class="h-lg-mn">
             <div class="h-logo">
-                <img src="assets/images/logo.png"/>
+                <img src="assets/images/logo.png" />
             </div>
         </div>
         <div class="h-lgn-frm clearfix">
             <div class="clearfix">
                 <div class="h-input">
-                    <input type="text" placeholder="Table Number (optional)" #ultabnum/>
-                </div>  
+                    <input type="text" placeholder="Table Number (optional)" #ultabnum />
+                </div>
                 <div class="h-input mandatory">
-                    <input type="text" placeholder="Name" #ulname/>
-                </div> 
+                    <input type="text" placeholder="Name" #ulname />
+                </div>
                 <div class="h-input mandatory">
-                    <input type="text" placeholder="Phone Number" #ulphnum/>
-                </div> 
+                    <input type="text" placeholder="Phone Number" #ulphnum />
+                </div>
                 <div class="h-input mandatory">
-                    <input type="text" placeholder="Address" #uladd/>
-                </div> 
+                    <input type="text" placeholder="Address" #uladd />
+                </div>
                 <div class="h-input mandatory">
-                    <input tabindex="-1"  matInput [matDatepicker]="picker" [(ngModel)]="date" placeholder="Date of birth" #uldob [max]="maxDate" (dateChange)="datepic(e,uldob)">
+                    <input tabindex="-1" matInput [matDatepicker]="picker" [(ngModel)]="date"
+                        placeholder="Date of birth" #uldob [max]="maxDate" (dateChange)="datepic(uldob)">
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                     <span class="h-date-clear" (click)="clearDate($event)"><i class="fa fa-times-circle"></i></span>
-                </div> 
+                </div>
             </div>
             <div class="clearfix h-lg-btn-mn">
-                <div class="h-lg-btn h-r-bot-fix"  (click)="genotp($event,ultabnum,ulname,ulphnum,uladd,uldob)">
-                   GENERATE OTP
-                </div> 
+                <div class="h-lg-btn h-r-bot-fix" (click)="genotp($event,ultabnum,ulname,ulphnum,uladd,uldob)">
+                    GENERATE OTP
+                </div>
             </div>
         </div>
     </div>

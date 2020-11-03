@@ -2,13 +2,14 @@
     <h4>Billing Details</h4>
     <div class="h-bd-inp">
         <div class="h-bd-inp-bx h-input">
-            <input tabindex="-1"  matInput [matDatepicker]="picker" placeholder="Search By Date" [(ngModel)]="date"  #searchDate (dateChange)="datepic(e,searchDate)">
+            <input tabindex="-1" matInput [matDatepicker]="picker" placeholder="Search By Date" [(ngModel)]="date"
+                #searchDate (dateChange)="datepic(searchDate)">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <span class="h-date-clear" (click)="clearDate($event)"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="h-bd-inp-bx h-input">
-            <input type="text" placeholder="Search" class="h-search-inp"/>
+            <input type="text" placeholder="Search" class="h-search-inp" />
         </div>
     </div>
 </div>
@@ -26,7 +27,8 @@
         </div>
     </div>
     <div class="h-bd-t-c cs-custom-scroll">
-        <div class="h-bd-t-c-e h-tb-r" *ngFor="let billingD of billingDetails.orderList; let i = index" [attr.date]="billingD.orderDate">
+        <div class="h-bd-t-c-e h-tb-r" *ngFor="let billingD of billingDetails.orderList; let i = index"
+            [attr.date]="billingD.orderDate">
             <div class="h-bd-t-e h-cell-2f h-tb-sn">{{i+1}}</div>
             <div class="h-bd-t-e h-cell-3f h-tb-c">
                 <div class="h-tb-head">TABLE NO</div>
@@ -44,13 +46,13 @@
                 <div class="h-tb-head">ORDER DETAILS</div>
                 <div class="h-tb-content">
                     <div class="h-tc" *ngFor="let foodlist of billingD.Orderdetails;">
-                         <span>{{foodlist.foodName}}</span> * <span>{{foodlist.quantity}}</span>
+                        <span>{{foodlist.foodName}}</span> * <span>{{foodlist.quantity}}</span>
                     </div>
-                </div>    
+                </div>
             </div>
             <div class="h-bd-t-e h-cell-3f h-fs-amt h-tb-c">
                 <div class="h-tb-head">AMOUNT</div>
-                <div class="h-tb-content">RS  <span>{{billingD.totalAmount}}</span></div>
+                <div class="h-tb-content">RS <span>{{billingD.totalAmount}}</span></div>
             </div>
             <div class="h-bd-t-e h-cell-3f h-tb-c">
                 <div class="h-tb-head">TAX</div>
