@@ -17,13 +17,13 @@ export class UserVerificationComponent implements OnInit {
   phno: string;
   companyID: number;
   customerId: number;
-  constructor(private dataService: DataserviceService,private dataServi: DataService, private appservice: RestAppService, private router: Router,
-    ) { }
-    logincheck = true
+  constructor(private dataService: DataserviceService, private dataServi: DataService, private appservice: RestAppService, private router: Router,
+  ) { }
+  logincheck = true
 
   ngOnInit() {
     if (this.logincheck != true) {
-      this.router.navigate([{ outlets: { auth: ['userlogin'] } }]);
+      this.router.navigate(['/userlogin']);
     }
     this.phno = this.dataServi.userPhonenumber;
     //    this.dataService.serviceData[0].phoneNumber;
@@ -66,12 +66,12 @@ export class UserVerificationComponent implements OnInit {
         data => {
           this.dataService.serviceData = this.obj;
           if (data == "Success")
-            this.router.navigate(['/', { outlets: { main: ['itemlist'] } }]);
+            this.router.navigate(['/itemlist']);
         }
         ,
         error => {
           if (error.error.text == "Success")
-            this.router.navigate(['/', { outlets: { main: ['itemlist'] } }]);
+            this.router.navigate(['/itemlist']);
           else
             alert('Enter Valid OTP');
         });

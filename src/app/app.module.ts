@@ -8,9 +8,11 @@ import { SignupComponent } from './signup/signup.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { UserVerificationComponent } from './user-verification/user-verification.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule,MatIconModule,MatButtonModule,
-  MatSidenavModule,MatCheckboxModule,
-  MatSelectModule,MatListModule,MatFormFieldModule,MatDatepickerModule,MatNativeDateModule,DateAdapter,MatBadgeModule,MatSlideToggleModule} from '@angular/material';
+import {
+  MatToolbarModule, MatIconModule, MatButtonModule,
+  MatSidenavModule, MatCheckboxModule,
+  MatSelectModule, MatListModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, DateAdapter, MatBadgeModule, MatSlideToggleModule
+} from '@angular/material';
 import { ItemsListComponent } from './items-list/items-list.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { UploadBannerComponent } from './upload-banner/upload-banner.component';
@@ -29,71 +31,71 @@ import { DateFormat } from './date-format';
 const routes: Routes = [
   {
     path: "",
-    component: LoginComponent,
-    outlet: "auth"
+    component: UserLoginComponent
+
   },
   {
     path: "superadmin",
-    component: SuperadminComponent,
-    outlet: "auth"
+    component: SuperadminComponent
+
   },
   {
     path: "userlogin",
-    component: UserLoginComponent,
-    outlet: "auth"
+    component: UserLoginComponent
+
   },
   {
     path: "adminlogin",
-    component: AdminLoginComponent,
-    outlet: "auth"
+    component: AdminLoginComponent
+
   },
   {
     path: "superadminlogin",
-    component: LoginComponent,
-    outlet: "auth"
+    component: LoginComponent
+
   },
   {
     path: "userverfication",
-    component: UserVerificationComponent,
-    outlet: "auth"
-  },{
+    component: UserVerificationComponent
+
+  }, {
     path: "signup",
-    component: SignupComponent,
-    outlet: "auth"
-  },{
+    component: SignupComponent
+
+  }, {
     path: "itemlist",
-    component: ItemsListComponent,
-    outlet: "main"
-  },{
+    component: ItemsListComponent
+
+  }, {
     path: "admindashboard",
-    component: AdminDashboardComponent,
-    outlet: "auth"
-  },{
+    component: AdminDashboardComponent
+
+  }, {
     path: "uploadbanner",
-    component: UploadBannerComponent,
-    outlet: "auth"
-  },{
+    component: UploadBannerComponent
+
+  }, {
     path: "billingdetails",
-    component: BillingDetailsComponent,
-    outlet: "auth"
-  },{
+    component: BillingDetailsComponent
+
+  }, {
     path: "orderdetails",
-    component: OrderDetailsComponent,
-    outlet: "auth"
-  },{
+    component: OrderDetailsComponent
+
+  }, {
     path: "editcategory",
-    component: EditMenuComponent,
-    outlet: "auth"
+    component: EditMenuComponent
+
   },
   {
     path: "vieworder",
-    component: ViewOrderComponent,
-    outlet: "auth"
+    component: ViewOrderComponent
+
   },
   {
     path: "orderplaced",
-    component: OrderplacedComponent,
-    outlet: "auth"
+    component: OrderplacedComponent
+
   }
 ];
 @NgModule({
@@ -119,19 +121,19 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    BrowserAnimationsModule,FormsModule,
-    MatToolbarModule,MatIconModule,MatButtonModule,MatSidenavModule,MatSlideToggleModule,
-    MatCheckboxModule,MatSelectModule,MatListModule,MatFormFieldModule,MatDatepickerModule,MatNativeDateModule,MatBadgeModule,MatCarouselModule.forRoot()
+    BrowserAnimationsModule, FormsModule,
+    MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatSlideToggleModule,
+    MatCheckboxModule, MatSelectModule, MatListModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatBadgeModule, MatCarouselModule.forRoot()
   ],
   providers: [
     { provide: DateAdapter, useClass: DateFormat },
     RestAppService],
-    
+
 
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private dateAdapter:DateAdapter<Date>) {
-		dateAdapter.setLocale('en-in'); // DD/MM/YYYY
-	}
- }
+  constructor(private dateAdapter: DateAdapter<Date>) {
+    dateAdapter.setLocale('en-in'); // DD/MM/YYYY
+  }
+}

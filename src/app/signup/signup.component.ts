@@ -45,7 +45,7 @@ export class SignupComponent implements OnInit {
         data => {
           this.IsUserExists = data as any;
           if (data > 0) {
-            this.router.navigate([{ outlets: { auth: ['superadmin'] } }]);
+            this.router.navigate(['/superadminlogin']);
           }
           else {
             alert('User already Exists');

@@ -30,7 +30,7 @@ export class AdminDashboardComponent implements OnInit {
   daysleft
   ngOnInit() {
     if (this.logincheck != true) {
-      this.router.navigate([{ outlets: { auth: ['adminlogin'] } }]);
+      this.router.navigate(['/adminlogin']);
     }
     if (this.dataService.adminData != null || this.dataService.adminData != undefined) {
       this.objDB = this.dataService.adminData;

@@ -7,7 +7,7 @@
         <div class="h-d-bx h-d-url h-diag-clk" dialog="h-dialog-url">
             Customer end URL
         </div>
-        <div class="h-d-bx h-d-logout" [routerLink]="['/',{ outlets: { auth: ['adminlogin'] } }]">
+        <div class="h-d-bx h-d-logout" [routerLink]="['/adminlogin']">
             Logout
         </div>
         <div class="h-d-logo">
@@ -47,16 +47,16 @@
     </div>
 </div>
 <div class="h-d-bottom">
-    <div class="h-d-bx" [routerLink]="['/',{ outlets: { auth: ['orderdetails'] } }]">
+    <div class="h-d-bx" [routerLink]="['/orderdetails']">
         Order Details
     </div>
-    <div class="h-d-bx" [routerLink]="['/',{ outlets: { auth: ['billingdetails'] } }]">
+    <div class="h-d-bx" [routerLink]="['/billingdetails']">
         Billing Details
     </div>
-    <div class="h-d-bx" [routerLink]="['/',{ outlets: { auth: ['editcategory'] } }]">
+    <div class="h-d-bx" [routerLink]="['/editcategory']">
         Edit Category
     </div>
-    <div class="h-d-bx" [routerLink]="['/',{ outlets: { auth: ['uploadbanner'] } }]">
+    <div class="h-d-bx" [routerLink]="['/uploadbanner']">
         Upload Banners
     </div>
 </div>

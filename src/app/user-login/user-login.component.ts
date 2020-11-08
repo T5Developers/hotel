@@ -38,10 +38,21 @@ export class UserLoginComponent implements OnInit {
     });
     var erlen = $(".hl-error").length;
     if (erlen == 0) {
+      var url = window.location.href;
+      let spliturl = url.split("?");
+      if (spliturl.length == 2) {
+        let cname = spliturl[1].split("=");
+        let obj = {
+          Apiurl: spliturl[0],
+          CompanyName: cname[1]
+        }
+        console.log(obj);
+        window.location.href = spliturl[0];
+      }
       this.dataSer.userPhonenumber = ulphnum.value;
       localStorage.setItem("PhoneNumber", ulphnum.value);
       let obj = {
-        CompanyID: 1,
+        CompanyID: '',
         SerialNo: ultabnum.value,
         Name: ulname.value,
         PhoneNumber: ulphnum.value,
@@ -56,7 +67,7 @@ export class UserLoginComponent implements OnInit {
             //this.datas(this.lstUserVerification);
             this.dataService.serviceData = this.lstUserVerification;
             localStorage.setItem("lstCompanyInfo", this.lstUserVerification);
-            this.router.navigate([{ outlets: { auth: ['userverfication'] } }]);
+            this.router.navigate(['/userverfication']);
             // this.router.navigate([{ outlets: { auth: ['userverfication'] } }], { state: { data: this.lstUserVerification } });
 
           }
@@ -68,7 +79,7 @@ export class UserLoginComponent implements OnInit {
           //  this.router.navigate([{ outlets: { auth: ['error'] } }]);
         });
       console.log(ulname.value, ulphnum.value);
-      this.router.navigate([{ outlets: { auth: ['userverfication'] } }]);
+      this.router.navigate(['/userverfication']);
     }
     event.stopPropagation();
   }

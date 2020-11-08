@@ -8,10 +8,10 @@
         <div class="h-lgn-frm clearfix">
             <div class="clearfix">
                 <div class="h-input mandatory">
-                    <input type="text" placeholder="Username" #uname/>
+                    <input type="text" placeholder="Username" #uname />
                 </div>
                 <div class="h-input mandatory">
-                    <input type="password" placeholder="Password" #pword/>
+                    <input type="password" placeholder="Password" #pword />
                 </div>
             </div>
             <div class="clearfix h-lg-btn-mn">
@@ -19,7 +19,7 @@
                     LOGIN
                 </div>
                 <!-- <a class="h-lg-fp">Forgot Password?</a>
-                <a class="h-lg-ln" [routerLink]="['/',{ outlets: { auth: ['signup'] } }]">Login as new user</a> -->
+                <a class="h-lg-ln" [routerLink]="['/signup']">Login as new user</a> -->
             </div>
         </div>
     </div>
@@ -32,11 +32,11 @@
         <div class="h-dialog-mn">
             <div class="h-dg-inp">
                 <label>New Password</label>
-                <input type="password" placeholder="Enter the new password" #newpassword/>
+                <input type="password" placeholder="Enter the new password" #newpassword />
             </div>
             <div class="h-dg-inp">
                 <label>Confirm Password</label>
-                <input type="password" placeholder="Re Enter the new password" #confirmpassword/>
+                <input type="password" placeholder="Re Enter the new password" #confirmpassword />
             </div>
             <div class="h-dg-btn-dv">
                 <div class="h-dialog-btn h-dialog-close" (click)="savePassword(newpassword,confirmpassword)">Save</div>

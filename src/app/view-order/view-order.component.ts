@@ -24,7 +24,7 @@ export class ViewOrderComponent implements OnInit {
   logincheck = true;
   ngOnInit() {
     if (this.logincheck != true) {
-      this.router.navigate([{ outlets: { auth: ['userlogin'] } }]);
+      this.router.navigate(['/userlogin']);
     }
     $(document).on("click", ".h-vo-ov", function () {
       $(".h-vo-pop").removeClass("h-open");
@@ -156,7 +156,7 @@ export class ViewOrderComponent implements OnInit {
             "order_id": this.lstPlaceOrder[0].razorOrderDetailsId,
             "handler": function (response) {
               if (response.razorpay_payment_id != "" && response.razorpay_payment_id != undefined && response.razorpay_payment_id != null) {
-                this.router.navigate([{ outlets: { auth: ['orderplaced'] } }]);
+                this.router.navigate(['/orderplaced']);
               }
               else {
                 this.Successmsg = "Details not saved. Please contact Administrator."
@@ -189,7 +189,7 @@ export class ViewOrderComponent implements OnInit {
           this.dataServ.orderDetails.phoneNumber = data[0].phoneNumber;
           this.dataServ.orderDetails.address = data[0].address;
           // if (data. != "" && response.razorpay_payment_id != undefined && response.razorpay_payment_id != null) {
-          this.router.navigate([{ outlets: { auth: ['orderplaced'] } }]);
+          this.router.navigate(['/orderplaced']);
           //}
         },
         error => {

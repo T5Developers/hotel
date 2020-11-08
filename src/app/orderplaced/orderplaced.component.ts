@@ -14,17 +14,17 @@ export class OrderplacedComponent implements OnInit {
   // orid = this.orderD.CustomerID;
   // phnum = this.orderD.Phonenumber;
   // addr = this.orderD.Address;
-  logincheck=true;
+  logincheck = true;
   orid = this.dataService.orderDetails.orderId;
   phnum = this.dataService.orderDetails.phoneNumber;
   addr = this.dataService.orderDetails.address;
 
   ngOnInit() {
-    if(this.logincheck != true){
-      this.router.navigate([{ outlets: { auth: ['userlogin'] } }]);
+    if (this.logincheck != true) {
+      this.router.navigate(['/userlogin']);
     }
   }
   homescreen() {
-    this.router.navigate([{ outlets: { main: ['itemlist'] } }]);
+    this.router.navigate(['/itemlist']);
   }
 }

@@ -29,7 +29,7 @@ export class ItemsListComponent implements OnInit {
   logincheck = true;
   ngOnInit() {
     if (this.logincheck != true) {
-      this.router.navigate([{ outlets: { auth: ['userlogin'] } }]);
+      this.router.navigate(['/userlogin']);
     }
 
 
@@ -39,7 +39,7 @@ export class ItemsListComponent implements OnInit {
     }
     else if (this.dataService.serviceData == undefined) {
       if (localStorage.getItem("lstCompanyInfo") == '[object Object]') {
-        this.router.navigate([{ outlets: { auth: ['userlogin'] } }]);
+        this.router.navigate(['/userlogin']);
       }
       else {
         this.obj = JSON.parse(localStorage.getItem("lstCompanyInfo"));
@@ -172,6 +172,47 @@ export class ItemsListComponent implements OnInit {
         // this.router.navigate([{ outlets: { auth: ['admindashboard'] } }]);
         alert('Banner not fetched');
       });
+    $(document).on("click", ".h-head-search a", function () {
+      $(".h-head-search").toggleClass("active");
+      $(".h-head-search input").focus();
+    });
+
+    $(document).on("keyup", ".h-head-search input", function () {
+      var valThis = $(this).val().toLowerCase();
+      $(".hl-il-li-mn").removeClass("h-noitems");
+      $(".hl-il-each").each(function () {
+        var text = $(this).find("h4").text().toLowerCase();
+        (text.indexOf(valThis) >= 0) ? $(this).removeClass("i-hide") : $(this).addClass("i-hide");
+      });
+      $(".hl-il-li-each").each(function () {
+        var chlen = $(this).find(".hl-il-each").length;
+        var hdlen = $(this).find(".hl-il-each.i-hide").length;
+        if (chlen == hdlen) {
+          $(this).addClass("i-hide");
+        }
+        else {
+          $(this).removeClass("i-hide");
+        }
+      });
+      var tchlen = $(".hl-il-each").length;
+      var thdlen = $(".hl-il-each.i-hide").length;
+      if (tchlen == thdlen) {
+        $(".hl-il-li-each").each(function () {
+          var text = $(this).find("h3").text().toLowerCase();
+          (text.indexOf(valThis) >= 0) ? $(this).removeClass("i-hide") : $(this).addClass("i-hide");
+          $(".hl-il-li-each").each(function () {
+            if (!($(this).hasClass("i-hide"))) {
+              $(this).find(".hl-il-each").removeClass("i-hide");
+            }
+          });
+        });
+      }
+      var fchlen = $(".hl-il-each").length;
+      var fhdlen = $(".hl-il-each.i-hide").length;
+      if (fchlen == fhdlen) {
+        $(".hl-il-li-mn").addClass("h-noitems");
+      }
+    });
   }
   banners() {
     var currentItem = 1;
@@ -320,11 +361,19 @@ export class ItemsListComponent implements OnInit {
       });
       localStorage.setItem("selectedItems", JSON.stringify(selectedI));
       console.log(JSON.stringify(selectedI));
-      this.router.navigate([{ outlets: { auth: ['vieworder'] } }]);
+      this.router.navigate(['/vieworder']);
     } else {
       alert("Your Cart is empty, Please add item(s) to place order");
     }
   }
 
+  navClick(event) {
+    var target = event.target || event.srcElement || event.currentTarget;
+    var idx = $(target).closest("mat-list-item").attr("data-index");
+    var element = $(".hl-il-li-each")[idx];
+    $(".h-il-main").animate({
+      scrollTop: element.offsetTop - 100
+    }, 1000);
+  }
 
 }

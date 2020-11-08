@@ -46,17 +46,17 @@ export class AdminLoginComponent implements OnInit {
           this.IsUserExists = data as any;
           if (this.IsUserExists.length > 0) {
             this.dataService.adminData = this.IsUserExists;
-            this.router.navigate([{ outlets: { auth: ['admindashboard'] } }]);
+            this.router.navigate(['/admindashboard']);
           }
           else {
             //error message
           }
         },
         error => {
-          this.router.navigate([{ outlets: { auth: ['adminlogin'] } }]);
+          this.router.navigate(['/adminlogin']);
           alert('Please enter valid Credentails');
         });
-      
+
     }
     event.stopPropagation();
   }

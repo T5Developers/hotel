@@ -35,38 +35,38 @@ export class LoginComponent implements OnInit {
     $(".h-input.mandatory").each(function () {
       var thzval = $(this).find("input").val().trim();
       var thzplc = $(this).find("input").attr("placeholder");
-      if(thzval == ""){
+      if (thzval == "") {
         var ermsg = `<p class="h-er-msg">Enter the ${thzplc}</p>`;
         $(this).append(ermsg);
         $(this).addClass("hl-error");
       }
     });
     var erlen = $(".hl-error").length;
-    if(erlen == 0){
+    if (erlen == 0) {
       console.log(uname.value, pword.value);
-       let obj = {
-      UserName: uname.value,
-      Password: pword.value
-    }
-    this.appservice.IsSAexists(obj).subscribe(
-      data => {
-        if (data == 0) {
-          alert('Enter the valid Credentials');
-        }
-        else {
-          this.IsUserExists = data as any;
-          localStorage.setItem("lstAdminIn", this.IsUserExists);
-          this.router.navigate([{ outlets: { auth: ['superadmin'] } }]);
-        }
-      },
-      error => {
-        alert('Please enter valid Credentails');
-      });
+      let obj = {
+        UserName: uname.value,
+        Password: pword.value
+      }
+      this.appservice.IsSAexists(obj).subscribe(
+        data => {
+          if (data == 0) {
+            alert('Enter the valid Credentials');
+          }
+          else {
+            this.IsUserExists = data as any;
+            localStorage.setItem("lstAdminIn", this.IsUserExists);
+            this.router.navigate(['/superadmin']);
+          }
+        },
+        error => {
+          alert('Please enter valid Credentails');
+        });
 
     }
     event.stopPropagation();
   }
-  savePassword(newpassword,confirmpassword){
-    console.log(newpassword.value,confirmpassword.value);
+  savePassword(newpassword, confirmpassword) {
+    console.log(newpassword.value, confirmpassword.value);
   }
 }

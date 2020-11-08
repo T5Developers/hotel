@@ -18,7 +18,7 @@ export class SuperadminComponent implements OnInit {
   logincheck = true;
   ngOnInit() {
     if (this.logincheck != true) {
-      this.router.navigate([{ outlets: { auth: ['superadminlogin'] } }]);
+      this.router.navigate(['/superadminlogin']);
     }
     this.Adminname = "Admin";
     this.appservice.GetSuperAdminInfo(this.Adminname).subscribe(

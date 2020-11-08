@@ -2,7 +2,8 @@
 <div class="hl-vo-mn cs-custom-scroll">
     <div class="hl-vo-mn-list">
         <ul>
-            <li [attr.foodid]="itemL.FoodId" *ngFor="let itemL of orderedList.ItemsList; let i = index" [attr.data-index]="i">
+            <li [attr.foodid]="itemL.FoodId" *ngFor="let itemL of orderedList.ItemsList; let i = index"
+                [attr.data-index]="i">
                 <div class="hl-il-cont">
                     <div class="hl-il-cont-l">
                         <h4>{{itemL.FoodName}}</h4>
@@ -33,7 +34,7 @@
             <span>Item Total</span>
             <span class="hl-vo-itl-pr">
                 <span>Rs</span>
-            <span class="hl-vo-itl-prz"></span>
+                <span class="hl-vo-itl-prz"></span>
             </span>
         </div>
         <div class="hl-vo-gst">
@@ -41,14 +42,14 @@
             <span class="hl-vo-gst-per">{{GST}} %</span>
             <span class="hl-vo-gst-pr">
                 <span>Rs</span>
-            <span class="hl-vo-gst-prz"></span>
+                <span class="hl-vo-gst-prz"></span>
             </span>
         </div>
         <div class="hl-vo-tpay">
             <span>To Pay</span>
             <span class="hl-vo-tpay-pr">
                 <span>Rs</span>
-            <span class="hl-vo-tpay-prz"></span>
+                <span class="hl-vo-tpay-prz"></span>
             </span>
         </div>
     </div>
@@ -68,7 +69,7 @@
         <div class="h-vo-c-mn">
             <h4>CHOOSE PAYMENT OPTION</h4>
             <div class="h-vo-py-r">
-                <input type="radio" id="onlinepayment" name="payment" checked/>
+                <input type="radio" id="onlinepayment" name="payment" checked />
                 <label for="onlinepayment">Online Payment</label>
             </div>
             <div class="h-vo-py-r">
