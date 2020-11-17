@@ -47,39 +47,58 @@ export class UserLoginComponent implements OnInit {
           CompanyName: cname[1]
         }
         console.log(obj);
-        window.location.href = spliturl[0];
-      }
-      this.dataSer.userPhonenumber = ulphnum.value;
-      localStorage.setItem("PhoneNumber", ulphnum.value);
-      let obj = {
-        CompanyID: '',
-        SerialNo: ultabnum.value,
-        Name: ulname.value,
-        PhoneNumber: ulphnum.value,
-        Address: uladd.value,
-        DOB: uldob.value
-      }
-      this.appservice.add(obj).subscribe(
-        data => {
-          this.lstUserVerification = data as any;
-          if (this.lstUserVerification.length > 0) {
+        this.appservice.GetCompanyUrl(obj).subscribe(
+          data => {
+            if (data != null) {
+              //UserVerificationNavigation
+              //alert('success');
+              this.dataSer.userPhonenumber = ulphnum.value;
+              localStorage.setItem("PhoneNumber", ulphnum.value);
+              let obj = {
+                CompanyID: data[0].companyID,
+                SerialNo: ultabnum.value,
+                Name: ulname.value,
+                PhoneNumber: ulphnum.value,
+                Address: uladd.value,
+                DOB: uldob.value
+              }
+              this.appservice.add(obj).subscribe(
+                data => {
+                  this.lstUserVerification = data as any;
+                  if (this.lstUserVerification.length > 0) {
 
-            //this.datas(this.lstUserVerification);
-            this.dataService.serviceData = this.lstUserVerification;
-            localStorage.setItem("lstCompanyInfo", this.lstUserVerification);
-            this.router.navigate(['/userverfication']);
-            // this.router.navigate([{ outlets: { auth: ['userverfication'] } }], { state: { data: this.lstUserVerification } });
+                    //this.datas(this.lstUserVerification);
+                    this.dataService.serviceData = this.lstUserVerification;
+                    localStorage.setItem("lstCompanyInfo", this.lstUserVerification);
+                    this.router.navigate(['/userverfication']);
+                    // this.router.navigate([{ outlets: { auth: ['userverfication'] } }], { state: { data: this.lstUserVerification } });
 
-          }
-          else {
-            //error message
-          }
-        },
-        error => {
-          //  this.router.navigate([{ outlets: { auth: ['error'] } }]);
-        });
-      console.log(ulname.value, ulphnum.value);
-      this.router.navigate(['/userverfication']);
+                  }
+                  else {
+                    //error message
+                  }
+                },
+                error => {
+                  //  this.router.navigate([{ outlets: { auth: ['error'] } }]);
+                });
+              console.log(ulname.value, ulphnum.value);
+              this.router.navigate(['/userverfication']);
+            }
+            else {
+              //login screen naviagtion
+              alert('failure');
+            }
+          },
+          error => {
+            alert('You are not authorized to view this page.');
+            return;
+          });
+        // window.location.href = spliturl[0];
+      }
+      else {
+        alert('Entered URL is not valid.');
+      }
+
     }
     event.stopPropagation();
   }

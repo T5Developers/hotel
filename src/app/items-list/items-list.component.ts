@@ -136,9 +136,22 @@ export class ItemsListComponent implements OnInit {
         this.itemList = frontendjson;
         localStorage.setItem("foodItemList", JSON.stringify(frontendjson));
         console.log(frontendjson.CategoryList);
+        var Cid = this.obj[0].companyID;
+        this.appservice.GetBanner(Cid).subscribe(
+          data => {
+            // if (data > 0) {
+            //alert('successfully updated');
+            this.bannerImage.imageList = data as any;
+            // }
+          },
+          error => {
+            // this.router.navigate([{ outlets: { auth: ['admindashboard'] } }]);
+            alert('Banner not fetched');
+          });
 
       }, error => {
-        alert('Error');
+        alert('No Items found');
+        this.router.navigate(['/userlogin']);
       });
     $(document).on("click", ".h-i-cr-acts", function () {
       var chlen = $(".h-i-carousel").find(".h-i-cr-c").find(".h-i-c-each").length;
@@ -161,17 +174,28 @@ export class ItemsListComponent implements OnInit {
       }
     });
 
-    this.appservice.GetBanner(1).subscribe(
-      data => {
-        // if (data > 0) {
-        //alert('successfully updated');
-        this.bannerImage.imageList = data as any;
-        // }
-      },
-      error => {
-        // this.router.navigate([{ outlets: { auth: ['admindashboard'] } }]);
-        alert('Banner not fetched');
-      });
+    // this.obj = JSON.parse(localStorage.getItem("lstItemProductList"));
+    // var Cid;
+    // if (this.obj != null) {
+    //   Cid = this.obj[0].companyID;
+    // }
+    // else {
+
+    //   Cid = JSON.parse(localStorage.getItem("lstCompanyInfo"))[0].companyID;
+    // }
+
+    // console.log(Cid);
+    // this.appservice.GetBanner(Cid).subscribe(
+    //   data => {
+    //     // if (data > 0) {
+    //     //alert('successfully updated');
+    //     this.bannerImage.imageList = data as any;
+    //     // }
+    //   },
+    //   error => {
+    //     // this.router.navigate([{ outlets: { auth: ['admindashboard'] } }]);
+    //     alert('Banner not fetched');
+    //   });
     $(document).on("click", ".h-head-search a", function () {
       $(".h-head-search").toggleClass("active");
       $(".h-head-search input").focus();
@@ -335,11 +359,13 @@ export class ItemsListComponent implements OnInit {
   }
   vieworder() {
     // this.obj = JSON.parse(localStorage.getItem("lstItemProductList"));
-    var Cid = 1;// this.obj[0].companyID;
+    //var Cid = this.obj[0].companyID;
+    this.obj = JSON.parse(localStorage.getItem("lstCompanyInfo"));
+    var Cid = this.obj[0].companyID;
     var selectedI = {
 
       CompanyID: Cid,
-      Phonenumber: "9876543210",
+      Phonenumber: "",
       ItemsList: []
     }
     if ($(".iselected").length) {

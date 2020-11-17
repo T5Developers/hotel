@@ -21,7 +21,7 @@ export class EditMenuComponent implements OnInit {
   logincheck = true;
   ngOnInit() {
     if (this.logincheck != true) {
-      this.router.navigate([{ outlets: { auth: ['adminlogin'] } }]);
+      this.router.navigate(['/adminlogin']);
     }
     if (this.lstProduct == undefined)
       this.lstProduct = JSON.parse(localStorage.getItem("lstProducts"));

@@ -17,12 +17,14 @@ export class BillingDetailsComponent implements OnInit {
   backendJson: []
   logincheck = true;
   ngOnInit() {
+   
+   let lst = JSON.parse(localStorage.getItem("lstProducts"));
     let obj = {
-      CompanyID: 1,
+      CompanyID: lst[0].companyID,
       Flag: 2
     }
     if (this.logincheck != true) {
-      this.router.navigate([{ outlets: { auth: ['adminlogin'] } }]);
+      this.router.navigate(['/adminlogin']);
     }
     this.appservice.GetOrderedDet(obj).subscribe(
       data => {

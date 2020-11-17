@@ -48,9 +48,11 @@ export class AdminDashboardComponent implements OnInit {
       var sdy = parseInt(stsp[1]);
       var smn = stsp[0];
       var startDatefa = sdy + "/" + smn + "/" + syr;
-      this.startDatef = startDatefa
+      this.startDatef = startDatefa;
       var EndDat = this.objDB[0].endDate;
+      console.log(this.objDB[0]);
       var endD = this.convertDate(EndDat);
+      console.log(endD);
       //endD = "10/10/2020";
       var edsp = endD.split("/");
       var eyr = edsp[2];
@@ -82,7 +84,7 @@ export class AdminDashboardComponent implements OnInit {
       if (this.objDB == undefined) {
         this.objDB = JSON.parse(localStorage.getItem("lstProducts"));
         if (this.objDB == null) {
-          this.router.navigate([{ outlets: { auth: ['adminlogin'] } }]);
+          this.router.navigate(['/adminlogin']);
         }
       }
       this.StartDate = this.objDB[0].startDate;
@@ -99,9 +101,13 @@ export class AdminDashboardComponent implements OnInit {
       var sdy = parseInt(stsp[1]);
       var smn = stsp[0];
       var startDatefa = sdy + "/" + smn + "/" + syr;
-      this.startDatef = startDatefa
+      this.startDatef = startDatefa;
       var EndDat = this.objDB[0].endDate;
       var endD = this.convertDate(EndDat);
+      console.log(endD);
+      console.log(this.objDB[0]);
+      console.log(this.objDB[0]);
+      console.log(this.objDB[0].EDate);
       //endD = "10/10/2020";
       var edsp = endD.split("/");
       var eyr = edsp[2];
@@ -110,7 +116,7 @@ export class AdminDashboardComponent implements OnInit {
       var emn = edsp[0];
       var sptendDate = eyr + "," + emn + "," + edy;
       var endDatefa = edy + "/" + emn + "/" + eyr;
-      this.endDatef = endDatefa
+      this.endDatef = endDatefa;
       var endDatel = emn + "/" + edy + "/" + eyr;
       this.minDate = new Date(sptendDate);
       //var inc = nedate.setDate(nedate.getDate() + 1)
@@ -129,18 +135,40 @@ export class AdminDashboardComponent implements OnInit {
     $(document).on("click", ".h-d-ov,.h-dialog-close", function () {
       $(".h-dialog").removeClass("h-open");
     });
-    $(".h-d-logo input").change(function (e) {
-      if (this.files && this.files[0]) {
-        $(this).closest(".h-d-logo").addClass("imgadded active");
-        const fileReader: FileReader = new FileReader();
-        fileReader.onload = function (event: Event) {
-          $(".imgadded.active").find("img").attr('src', fileReader.result);
-          $(".h-d-logo").removeClass("active");
-        }
+    // $(".h-d-logo input").change(function (e) {
+    //   if (this.files && this.files[0]) {
+    //     $(this).closest(".h-d-logo").addClass("imgadded active");
+    //     const fileReader: FileReader = new FileReader();
+    //     fileReader.onload = function (event: Event) {
+    //       $(".imgadded.active").find("img").attr('src', fileReader.result);
+    //       $(".h-d-logo").removeClass("active");
+    //       //   var img = fileReader.result;
+    //       //  // var base64removedsrc = img.split(',')[1];
+    //       //   var logo = {
+    //       //     "adminLogo": base64removedsrc
+    //       //   }
+    //       //   console.log(logo);
+    //       /* let obj = {
+    //          CompanyID: JSON.parse(localStorage.getItem("lstProducts"))[0].companyID,
+    //          Logo://logo
+    //        }
+    //        console.log(obj);
+    //        this.appservice.updatecomlogo(obj).subscribe(
+    //          data => {
+    //            if (data > 0) {
+    //              alert('Logo updated sucessfully.');
+    //            }
 
-        fileReader.readAsDataURL(this.files[0]);
-      }
-    });
+    //          },
+    //          error => {
+    //            // this.router.navigate([{ outlets: { auth: ['admindashboard'] } }]);
+    //            alert('Logo not updated sucessfully. ');
+    //          });*/
+    //     }
+
+    //     fileReader.readAsDataURL(this.files[0]);
+    //   }
+    // });
     $(document).on("click", ".h-img-clear", function () {
       $(this).closest(".h-d-logo").removeClass("imgadded");
       $(this).closest(".h-d-logo").find("input").val("");
@@ -179,13 +207,18 @@ export class AdminDashboardComponent implements OnInit {
         $(".h-d-rw-s-d").val(fixedeDate);
       } else {
         var price = 100;
-        var gst = 18;
+        var gst = this.GST;
         var dayP = Difference_In_Days * price;
-        var dayG = Math.ceil(dayP / gst);
-        var dayT = dayP + dayG;
+        let dayG;
+        if (gst == 0) {
+          dayG = 0
+        } else {
+          dayG = Math.ceil(dayP / gst);
+        }
+        let dayT = dayP + dayG;
         $(".h-d-rw-t-d").text(Difference_In_Days);
         $(".h-d-rw-d-p").text(dayP);
-        $(".h-d-rw-g-p").text(Math.ceil(dayG));
+        $(".h-d-rw-g-p").text(dayG);
         $(".h-d-rw-t-p").text(dayT);
       }
     }
@@ -224,18 +257,29 @@ export class AdminDashboardComponent implements OnInit {
         var price = this.CostPerDay;
         var gst = this.GST;
         var dayP = 30 * price;
-        var dayG = Math.ceil(dayP / gst);
-        var dayT = dayP + dayG;
+        let dayG;
+        if (gst == 0) {
+          dayG = 0
+        } else {
+          dayG = Math.ceil(dayP / gst);
+        }
+        let dayT = dayP + dayG;
         $(".h-d-rw-t-d").text("30");
         $(".h-d-rw-d-p").text(dayP);
         $(".h-d-rw-g-p").text(dayG);
         $(".h-d-rw-t-p").text(dayT);
       } else {
         var price = this.CostPerDay;
+        console.log(price);
         var gst = this.GST;
         var dayP = Difference_In_Days * price;
-        var dayG = Math.ceil(dayP / gst);
-        var dayT = dayP + dayG;
+        let dayG;
+        if (gst == 0) {
+          dayG = 0
+        } else {
+          dayG = Math.ceil(dayP / gst);
+        }
+        let dayT = dayP + dayG;
         $(".h-d-rw-t-d").text(Difference_In_Days);
         $(".h-d-rw-d-p").text(dayP);
         $(".h-d-rw-g-p").text(dayG);
@@ -304,7 +348,31 @@ export class AdminDashboardComponent implements OnInit {
 
 
   // console.log(convertDate('Mon Nov 19 13:29:40 2012')) // => "19/11/2012"
+  adminlogo = {};
+  adminlogofn(e) {
+    var target = e.target || e.srcElement || e.currentTarget;
+    if (target.files && target.files[0]) {
+      var logo = {};
+      $(target).closest(".h-d-logo").addClass("imgadded active");
+      const fileReader: FileReader = new FileReader();
+      fileReader.onload = function (event: Event) {
+        $(".imgadded.active").find("img").attr('src', fileReader.result);
+        $(".h-d-logo").removeClass("active");
 
+      }
+      fileReader.readAsDataURL(target.files[0]);
+
+      setTimeout(function () {
+        var img = $(".h-d-logo").find("img").attr('src');
+        var base64removedsrc = img.split(',')[1];
+        logo = {
+          "adminLogo": base64removedsrc
+        }
+        this.adminlogo = logo;
+        console.log(this.adminlogo);
+      }, 50);
+    }
+  }
 }
 
 

@@ -120,7 +120,7 @@ const routes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     BrowserAnimationsModule, FormsModule,
     MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, MatSlideToggleModule,
     MatCheckboxModule, MatSelectModule, MatListModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatBadgeModule, MatCarouselModule.forRoot()
@@ -134,6 +134,6 @@ const routes: Routes = [
 })
 export class AppModule {
   constructor(private dateAdapter: DateAdapter<Date>) {
-    dateAdapter.setLocale('en-in'); // DD/MM/YYYY
+    dateAdapter.setLocale('en-GB'); // DD/MM/YYYY
   }
 }

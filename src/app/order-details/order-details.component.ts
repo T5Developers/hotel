@@ -31,7 +31,7 @@ export class OrderDetailsComponent implements OnInit {
   logincheck = true;
   ngOnInit() {
     if (this.logincheck != true) {
-      this.router.navigate([{ outlets: { auth: ['adminlogin'] } }]);
+      this.router.navigate(['/adminlogin']);
     }
     let lst = JSON.parse(localStorage.getItem("lstProducts"));
     let obj = {

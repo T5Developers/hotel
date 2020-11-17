@@ -41,6 +41,9 @@ export class RestAppService {
     public add(userlogin) {
         return this.http.post(this.accessPointUrl + "InsertCust", JSON.stringify(userlogin), { headers: this.headers });
     }
+    public GetCompanyUrl(obj) {
+        return this.http.post(this.accessPointUrl + "GetCompanyExistsInfo", JSON.stringify(obj), { headers: this.headers });
+    }
 
     public SuperAdminInsert(obj) {
         return this.http.post(this.accessPointUrl + "SuperAdminInsert", JSON.stringify(obj), { headers: this.headers });
@@ -89,6 +92,9 @@ export class RestAppService {
     }
     public renewalsub(obj) {
         return this.http.post(this.accessPointUrl + "Renew", JSON.stringify(obj), { headers: this.headers });
+    }
+    public updatecomlogo(obj) {
+        return this.http.post(this.accessPointUrl + "UpdateAdminLogo", JSON.stringify(obj), { headers: this.headers });
     }
     public editCategory(obj) {
         var lst = obj.CategoryList;

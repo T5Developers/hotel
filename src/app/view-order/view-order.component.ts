@@ -113,6 +113,9 @@ export class ViewOrderComponent implements OnInit {
       if (this.lstCustInfo[0].serialNo == undefined || this.lstCustInfo[0].serialNo == NaN || this.lstCustInfo[0].serialNo == "") {
         this.TableNo = 0;
       }
+      else {
+        this.TableNo = this.lstCustInfo[0].serialNo;
+      }
       if (localStorage.getItem("lstItemProductList") == null) {
         JSON.parse(localStorage.getItem("lstCompanyInfo"))[0].companyID
         var Cid = JSON.parse(localStorage.getItem("lstCompanyInfo"))[0].companyID
@@ -131,7 +134,7 @@ export class ViewOrderComponent implements OnInit {
         DOB: this.lstCustInfo[0].dob,
         Address: this.lstCustInfo[0].address,
         PhoneNumber: Number(this.lstCustInfo[0].phoneNumber),
-        TableNo: this.TableNo,
+        TableNo: Number(this.TableNo),
         PaymentType: payment,
         FoodName: thzname,
         FoodProductId: Number(thzid),

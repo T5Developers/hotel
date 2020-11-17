@@ -23,6 +23,7 @@ export class SuperadminComponent implements OnInit {
     this.Adminname = "Admin";
     this.appservice.GetSuperAdminInfo(this.Adminname).subscribe(
       data => {
+        debugger;
         this.adminsList = data[0] as any;
         // this.adminsList[0]
 
@@ -133,7 +134,7 @@ export class SuperadminComponent implements OnInit {
     $(".uname").val(thisData.userName);
     $(".pword").val(thisData.password);
     $(".sdate").val(thisData.StartDate);
-    console.log(thisData.startDate);
+    console.log(thisData);
     $(".edate").val(thisData.EndDate);
     $(".cpday").val(thisData.price);
     $(".pymnt").val(thisData.paymentType);
@@ -160,6 +161,7 @@ export class SuperadminComponent implements OnInit {
       data => {
         if (data > 0) {
           alert('Pause Successfully updated');
+          this.ngOnInit();
         }
       },
       error => {
@@ -283,7 +285,8 @@ export class SuperadminComponent implements OnInit {
       }
       this.appservice.AdminReg(edata).subscribe(
         data => {
-          this.lstAdminInfo = data as any;
+          //this.lstAdminInfo = data as any;
+          console.log(data);
           alert('Saved successfully');
         },
         error => {

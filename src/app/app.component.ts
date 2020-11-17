@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { DataService } from './data.service';
 import * as $ from 'jquery';
+import { RestAppService } from './app.services';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +13,7 @@ import * as $ from 'jquery';
 export class AppComponent {
   title = 'hotel';
 
-  constructor(location: Location, router: Router, private dataService: DataService) {
+  constructor(private appservice: RestAppService, location: Location, router: Router, private dataService: DataService) {
 
 
   }
@@ -27,7 +28,20 @@ export class AppComponent {
         CompanyName: cname[1]
       }
       console.log(obj);
-      window.location.href = spliturl[0];
+      this.appservice.GetCompanyUrl(obj).subscribe(
+        data => {
+          if (data > 0) {
+            //UserVerificationNavigation
+          }
+          else {
+//navigation to same page.
+          }
+        },
+        error => {
+          alert('You are not authorized to view this page.');
+          return;
+        });
+      //  window.location.href = spliturl[0];
     }
 
   }
